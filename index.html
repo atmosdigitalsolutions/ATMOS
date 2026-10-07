@@ -13,7 +13,6 @@
   <!-- Firebase Compatibility Libraries for Real-Time Cross-Device Live Sync -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
   <style>
     :root {
@@ -30,7 +29,7 @@
       --accent-amber-bg: #fffbeb;
       --accent-purple: #7c3aed;
       --accent-purple-bg: #f5f3ff;
-      --bg: #F7F4EF;
+      --bg: #f8fafc;
       --card-bg: #ffffff;
       --text-main: #0f172a;
       --text-muted: #64748b;
@@ -53,7 +52,7 @@
     }
 
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding-bottom: 90px; }
+    body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); color: var(--text-main); min-height: 100vh; padding-bottom: 90px; }
 
     /* ATMOS Shiny Logo Effect */
     .brand-logo-box {
@@ -373,175 +372,9 @@
     }
 
     #pdfReportTemplate { display: none; }
-  
-    /* === MULTI-TENANT PLATFORM CSS === */
-
-    /* WELCOME PAGE */
-    .welcome-page { position: fixed; inset: 0; background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 50%, #f8fafc 100%); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 20px; overflow-y: auto; }
-    .welcome-container { max-width: 600px; width: 100%; text-align: center; background: white; border-radius: 20px; padding: 40px 30px; box-shadow: 0 20px 60px -10px rgba(37, 99, 235, 0.15); }
-    .welcome-logo { font-size: 2rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 8px; letter-spacing: -0.5px; }
-    .welcome-title { font-size: 1.6rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 12px; }
-    .welcome-subtitle { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
-    .welcome-categories { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 24px; }
-    .welcome-cat-item { background: var(--bg); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 5px; }
-    .welcome-cat-item i { color: var(--primary); font-size: 0.7rem; }
-    .welcome-trial-box { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary-light), #dbeafe); padding: 10px 24px; border-radius: 30px; font-weight: 800; font-size: 1rem; color: var(--primary); margin-bottom: 24px; }
-    .welcome-continue-text { font-size: 1.1rem; font-weight: 800; color: var(--atmos-navy); margin-bottom: 20px; }
-    .welcome-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-welcome-secondary { padding: 12px 32px; font-size: 0.95rem; font-weight: 700; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s; }
-    .btn-welcome-secondary:hover { background: var(--primary); color: white; }
-
-    /* SUBSCRIPTION BANNER */
-    .sub-banner { padding: 6px 20px; font-size: 0.8rem; font-weight: 700; text-align: center; align-items: center; justify-content: center; gap: 6px; }
-    .sub-active { background: #ecfdf5; color: #059669; border-bottom: 2px solid #059669; }
-    .sub-trial { background: #eff6ff; color: #2563eb; border-bottom: 2px solid #2563eb; }
-    .sub-free { background: #f5f3ff; color: #7c3aed; border-bottom: 2px solid #7c3aed; }
-    .sub-expired { background: #fff1f2; color: #e11d48; border-bottom: 2px solid #e11d48; }
-
-    /* SUBSCRIPTION PLANS */
-    .sub-plan-card { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border: 2px solid var(--border); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s; }
-    .sub-plan-card:hover { border-color: var(--primary); background: var(--primary-light); }
-    .sub-plan-card.selected { border-color: var(--primary); background: var(--primary-light); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
-
-    /* THEME SELECTOR */
-    .theme-btn { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border); cursor: pointer; padding: 2px; background: white; transition: all 0.2s; }
-    .theme-btn span { display: block; width: 100%; height: 100%; border-radius: 50%; }
-    .theme-btn.active { border-color: var(--atmos-navy); box-shadow: 0 0 0 2px var(--atmos-navy); }
-    /* dark mode toggle removed */
-
-    /* DATA TABLE */
-    .data-table { border-collapse: collapse; }
-    .data-table th { font-weight: 800; color: var(--text-main); border-bottom: 2px solid var(--border); }
-    .data-table td { border-bottom: 1px solid var(--border); }
-
-    /* FINANCIAL NUMBER COLORS */
-    .fin-income, .fin-profit, .fin-positive { color: #059669 !important; font-weight: 700; }
-    .fin-expense, .fin-loss, .fin-negative { color: #e11d48 !important; font-weight: 700; }
-    .fin-receivable { color: #7c3aed !important; font-weight: 700; }
-    .fin-admin-transfer { color: #d97706 !important; font-weight: 700; }
-    .fin-neutral { color: #2563eb !important; font-weight: 700; }
-
-    /* === THEME SYSTEM === */
-    [data-theme="emerald"] { --primary: #059669; --primary-light: #ecfdf5; --grad-navy: linear-gradient(135deg, #0B1E2D 0%, #059669 100%); --grad-bank: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); }
-    [data-theme="rose"] { --primary: #e11d48; --primary-light: #fff1f2; --grad-navy: linear-gradient(135deg, #0B1E2D 0%, #e11d48 100%); --grad-bank: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); }
-    [data-theme="amber"] { --primary: #d97706; --primary-light: #fffbeb; --grad-navy: linear-gradient(135deg, #0B1E2D 0%, #d97706 100%); --grad-bank: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); }
-    [data-theme="purple"] { --primary: #7c3aed; --primary-light: #f5f3ff; --grad-navy: linear-gradient(135deg, #0B1E2D 0%, #7c3aed 100%); --grad-bank: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); }
-
-    /* Dark mode removed per user request */
-
   </style>
 </head>
 <body>
-
-<!-- WELCOME PAGE -->
-<div id="welcomePage" class="welcome-page" style="display:none;">
-  <div class="welcome-container">
-    <img src="https://media.base44.com/images/public/6ac62406a80daf6ebe3d6eba/0b5329659_IMG_2552.jpg" alt="FinTrack Business" style="width: 110px; height: 110px; border-radius: 20px; margin-bottom: 12px; box-shadow: 0 4px 24px rgba(35, 47, 58, 0.15); object-fit: cover;" />
-    <h1 class="welcome-title">Welcome to FinTrack Business</h1>
-    <p class="welcome-subtitle">A comprehensive financial management platform designed for:</p>
-    <div class="welcome-categories">
-      <span class="welcome-cat-item"><i class="fa-solid fa-store"></i> Akshaya Centers</span>
-      <span class="welcome-cat-item"><i class="fa-solid fa-shop"></i> Common Service Centers (CSC)</span>
-      <span class="welcome-cat-item"><i class="fa-solid fa-wifi"></i> Internet Service Centers</span>
-      <span class="welcome-cat-item"><i class="fa-solid fa-laptop"></i> Digital Service Organizations</span>
-      <span class="welcome-cat-item"><i class="fa-solid fa-building"></i> Similar Small & Medium Service Businesses</span>
-    </div>
-    <div class="welcome-trial-box">
-      <i class="fa-solid fa-gift" style="color:var(--primary);"></i>
-      <span id="welcomeTrialDuration">14-Day Free Trial</span>
-    </div>
-    <h3 class="welcome-continue-text">Do you wish to continue?</h3>
-    <div class="welcome-actions">
-      <button class="btn-primary" onclick="showLoginPage()" style="padding:12px 32px; font-size:0.95rem;">
-        <i class="fa-solid fa-right-to-bracket"></i> Login
-      </button>
-      <button class="btn-welcome-secondary" onclick="showRegistrationPage()">
-        <i class="fa-solid fa-store"></i> Register Your Business
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- BUSINESS REGISTRATION MODAL -->
-<div id="registrationModal" class="modal" style="display:none;">
-  <div class="modal-card" style="max-width:480px;">
-    <div style="text-align:center; margin-bottom:20px;">
-      <div class="brand-logo-box" style="font-size:1.4rem; padding:8px 16px; margin-bottom:8px;">FinTrack<span style="color:var(--primary);">.</span></div>
-      <h2 style="font-size:1.1rem; font-weight:900; color:var(--atmos-navy); text-transform:uppercase;">Register Your Business</h2>
-    </div>
-
-    <!-- Step 1: Business Info -->
-    <div id="regStep1">
-      <div class="form-group">
-        <label>Business / Shop Name <span style="color:var(--atmos-red);">*</span></label>
-        <input type="text" id="regBusinessName" placeholder="e.g. ATMOS Digital Solutions">
-      </div>
-      <div class="form-group">
-        <label>Admin Name <span style="color:var(--atmos-red);">*</span></label>
-        <input type="text" id="regAdminName" placeholder="Enter admin full name">
-      </div>
-      <div class="form-group">
-        <label>Admin Email <span style="color:var(--atmos-red);">*</span></label>
-        <input type="email" id="regAdminEmail" placeholder="Enter valid email address">
-        <p style="font-size:0.7rem; color:var(--text-muted); margin-top:4px;">This email will be used for account recovery and important account communication.</p>
-      </div>
-      <div class="form-group">
-        <label>Admin Mobile Number <span style="color:var(--atmos-red);">*</span></label>
-        <input type="tel" id="regAdminMobile" placeholder="e.g. 8089278115" maxlength="15">
-      </div>
-      <div class="form-group">
-        <label>Password <span style="color:var(--atmos-red);">*</span></label>
-        <input type="password" id="regPassword" placeholder="Create a strong password" minlength="6">
-      </div>
-      <div class="form-group">
-        <label>Confirm Password <span style="color:var(--atmos-red);">*</span></label>
-        <input type="password" id="regConfirmPassword" placeholder="Re-enter password" minlength="6">
-      </div>
-      <button class="btn-primary" onclick="proceedToRegStep2()" style="width:100%; margin-top:8px;">
-        Continue to Business Profile <i class="fa-solid fa-arrow-right"></i>
-      </button>
-      <div style="text-align:center; margin-top:12px;">
-        <a style="font-size:0.8rem; color:var(--primary); cursor:pointer; font-weight:700;" onclick="closeRegistrationModal()">Back to Welcome</a>
-      </div>
-    </div>
-
-    <!-- Step 2: Business Profile -->
-    <div id="regStep2" style="display:none;">
-      <div class="form-group">
-        <label>Business Name</label>
-        <input type="text" id="regBusinessNameConfirm" readonly style="background:var(--bg); font-weight:700;">
-      </div>
-      <div class="form-group">
-        <label>Business Logo Upload</label>
-        <input type="file" id="regBusinessLogo" accept="image/*" onchange="previewRegLogo(event)">
-        <div id="regLogoPreview" style="width:100px; height:100px; border:2px dashed var(--border); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; margin-top:8px; background:var(--bg);">
-          <i class="fa-solid fa-image" style="font-size:1.5rem; color:var(--text-muted);"></i>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Motto / Caption</label>
-        <input type="text" id="regMotto" placeholder="e.g. Fast. Secure. Seamless.">
-      </div>
-      <div class="form-group">
-        <label>Business Category <span style="color:var(--atmos-red);">*</span></label>
-        <select id="regCategory" onchange="toggleOtherCategory()">
-          <option value="">Select Category</option>
-          <option value="Akshaya Center">Akshaya Center</option>
-          <option value="Common Service Center (CSC)">Common Service Center (CSC)</option>
-          <option value="All">All</option>
-          <option value="Other">Other</option>
-        </select>
-        <input type="text" id="regOtherCategory" placeholder="Enter category name" style="display:none; margin-top:8px;">
-      </div>
-      <button class="btn-primary" onclick="completeRegistration()" style="width:100%; margin-top:8px;" id="regSubmitBtn">
-        <i class="fa-solid fa-check-circle"></i> Complete Registration
-      </button>
-      <div style="text-align:center; margin-top:12px;">
-        <a style="font-size:0.8rem; color:var(--text-muted); cursor:pointer; font-weight:700;" onclick="backToRegStep1()">Back</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- FLOATING WHATSAPP SUPPORT -->
 <a href="https://wa.me/918089278115?text=Hi%2C%20ATMOS%20Digital%20Solutions.%20I%20need%20operational%20support." target="_blank" class="floating-support no-print">
@@ -565,18 +398,6 @@
   <a class="drawer-menu-item" id="drawer-reportsTab" onclick="navigateFromDrawer('reportsTab')"><i class="fa-solid fa-file-invoice-dollar"></i> Financial Reports</a>
   <a class="drawer-menu-item" id="drawer-adminTab" style="display: none;" onclick="navigateFromDrawer('adminTab')"><i class="fa-solid fa-user-shield"></i> Admin Controls</a>
   <a class="drawer-menu-item" id="drawer-hrTab" onclick="navigateFromDrawer('hrTab')"><i class="fa-solid fa-id-card-clip"></i> HR Management</a>
-  <a class="drawer-menu-item" id="drawer-appSettingsTab" style="display: none;" onclick="navigateFromDrawer('appSettingsTab')"><i class="fa-solid fa-gears"></i> Application Settings</a>
-  <div class="drawer-theme-section" style="padding: 12px 20px; border-top: 1px solid var(--border); margin-top: 8px;">
-    <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">Theme</div>
-    <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-      <button class="theme-btn theme-blue active" onclick="setTheme('blue')" title="Blue (Default)"><span style="background:#2563eb;"></span></button>
-      <button class="theme-btn theme-emerald" onclick="setTheme('emerald')" title="Emerald"><span style="background:#059669;"></span></button>
-      <button class="theme-btn theme-rose" onclick="setTheme('rose')" title="Rose"><span style="background:#e11d48;"></span></button>
-      <button class="theme-btn theme-amber" onclick="setTheme('amber')" title="Amber"><span style="background:#d97706;"></span></button>
-      <button class="theme-btn theme-purple" onclick="setTheme('purple')" title="Purple"><span style="background:#7c3aed;"></span></button>
-    </div>
-    
-  </div>
 </div>
 
 <!-- LOGIN MODAL -->
@@ -584,64 +405,31 @@
   <div class="modal-card">
     <div style="text-align: center; margin-bottom: 20px;">
       <div id="loginBrandLogoBox" class="brand-logo-box" style="font-size: 1.4rem; padding: 8px 16px; margin-bottom: 8px;">
-        FinTrack<span style="color:var(--primary);">.</span>
+        ATMOS<span>.</span>
       </div>
-      <h2 style="font-size: 1.1rem; font-weight: 900; color: var(--atmos-navy); text-transform: uppercase;">FinTrack Business</h2>
+      <h2 style="font-size: 1.1rem; font-weight: 900; color: var(--atmos-navy); text-transform: uppercase;">Digital Solutions</h2>
       <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Fast. Secure. Seamless.</p>
     </div>
 
     <div style="display: flex; gap: 8px; margin-bottom: 16px; background: var(--bg); padding: 4px; border-radius: var(--radius-md);">
-      <button id="mtLoginTabAdmin" type="button" style="flex: 1; background: white; color: var(--atmos-navy); font-weight: 800; font-size: 0.8rem;" onclick="setMTLoginMode('admin')">Admin Login</button>
-      <button id="mtLoginTabStaff" type="button" style="flex: 1; background: transparent; color: var(--text-muted); font-weight: 800; font-size: 0.8rem;" onclick="setMTLoginMode('staff')">Staff Login</button>
-    </div>
-
-    <div id="mtAdminLoginForm">
-      <div class="form-group"><label>Username or Email</label><input type="text" id="mtLoginEmail" placeholder="Enter your username or email" autocomplete="off"></div>
-      <div class="form-group"><label>Password</label><input type="password" id="mtLoginPassword" placeholder="Enter password" autocomplete="off"></div>
-      <button class="btn-primary" onclick="performMultiTenantLogin()" style="margin-top: 8px; width: 100%;">Sign In</button>
-    </div>
-
-    <div id="mtStaffLoginForm" style="display: none;">
-      <div class="form-group"><label>Business ID</label><input type="text" id="staffLoginBid" placeholder="Enter your Business ID"></div>
-      <div class="form-group"><label>Username</label><input type="text" id="staffLoginUser" placeholder="Enter your username"></div>
-      <div class="form-group"><label>Password</label><input type="password" id="staffLoginPass" placeholder="Enter password" autocomplete="off"></div>
-      <button class="btn-primary" onclick="performStaffMultiTenantLogin()" style="margin-top: 8px; width: 100%;">Sign In</button>
-    </div>
-
-    <div style="margin-top: 12px; text-align: center;">
-      <a style="font-size: 0.75rem; color: var(--atmos-red); font-weight: 700; cursor: pointer;" onclick="openForgotPasswordModal()">Forgot Password?</a>
-    </div>
-    <div style="margin-top: 8px; text-align: center;">
-      <a style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; cursor: pointer;" onclick="showWelcomePage()">Back to Welcome</a>
+      <button id="loginTabStaff" type="button" style="flex: 1; background: white; color: var(--atmos-navy); font-weight: 800; font-size: 0.8rem;" onclick="setLoginMode('Staff')">Staff Login</button>
+      <button id="loginTabAdmin" type="button" style="flex: 1; background: transparent; color: var(--text-muted); font-weight: 800; font-size: 0.8rem;" onclick="setLoginMode('Admin')">Admin Login</button>
     </div>
     
-  </div>
-</div>
+    <div class="form-group">
+      <label id="userCodeLabel">Select Account</label>
+      <select id="loginUserSelect"></select>
+    </div>
 
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter Password" autocomplete="off" required>
+    </div>
 
-<!-- ADMIN SETUP MODAL (First-Time Admin Migration) -->
-<div id="adminSetupModal" class="modal" style="display: none;">
-  <div class="modal-card" style="max-width: 420px;">
-    <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--atmos-navy);">Complete Your Account Setup</h3>
-    <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 16px;">
-      You're logging in for the first time. Please provide your Gmail ID and set a new password.
-      From your next login, use this email and password. All your existing data is preserved.
-    </p>
-    <div class="form-group">
-      <label>Gmail Address <span style="color:var(--atmos-red);">*</span></label>
-      <input type="email" id="adminSetupEmail" placeholder="Enter your Gmail address" autocomplete="off">
-    </div>
-    <div class="form-group">
-      <label>New Password <span style="color:var(--atmos-red);">*</span></label>
-      <input type="password" id="adminSetupPass" placeholder="Enter new password (min 6 chars)" autocomplete="off">
-    </div>
-    <div class="form-group">
-      <label>Confirm Password <span style="color:var(--atmos-red);">*</span></label>
-      <input type="password" id="adminSetupConfirmPass" placeholder="Confirm new password" autocomplete="off">
-    </div>
-    <button class="btn-primary" onclick="completeAdminSetup()" style="margin-top: 8px; width: 100%;">Complete Setup</button>
-    <div style="margin-top: 8px; text-align: center;">
-      <a style="font-size: 0.75rem; color: var(--text-muted); cursor: pointer; font-weight: 700;" onclick="document.getElementById('adminSetupModal').style.display='none'">Skip for now</a>
+    <button class="btn-primary" onclick="performLogin()" style="margin-top: 8px;">Sign In to Portal</button>
+
+    <div id="forgotPasswordBtnContainer" style="margin-top: 12px; text-align: center; display: none;">
+      <a style="font-size: 0.75rem; color: var(--atmos-red); font-weight: 700; text-decoration: none; cursor: pointer;" onclick="openForgotPasswordModal()">Forgot Admin Password?</a>
     </div>
   </div>
 </div>
@@ -687,13 +475,9 @@
   <div class="nav-actions">
     <span id="cloudSyncStatusBadge" class="sync-badge sync-local"><i class="fa-solid fa-wifi"></i> Local Sync</span>
     <span id="activeUserBadge" class="user-pill">Guest</span>
-    <button id="upgradeBtn" class="nav-icon-btn" onclick="openSubscriptionModal()" title="Upgrade to Premium" style="display:none; background: var(--accent-green); color: white; font-weight:700;"><i class="fa-solid fa-crown"></i></button>
-    <button class="nav-icon-btn" onclick="performLogout()" title="Sign Out"><i class="fa-solid fa-power-off"></i></button>
+    <button class="nav-icon-btn" onclick="location.reload()" title="Sign Out"><i class="fa-solid fa-power-off"></i></button>
   </div>
 </nav>
-
-<!-- SUBSCRIPTION STATUS BANNER -->
-<div id="subscriptionBanner" class="sub-banner" style="display:none;"></div>
 
 <!-- NAVIGATION TABS -->
 <div class="tab-bar no-print">
@@ -705,7 +489,6 @@
   <button class="tab-btn" id="btn-reportsTab" onclick="switchTab('reportsTab', this)">Financial Reports</button>
   <button class="tab-btn" id="btn-adminTab" style="display: none;" onclick="switchTab('adminTab', this)">Admin Controls</button>
   <button class="tab-btn" id="btn-hrTab" onclick="switchTab('hrTab', this)">HR Management</button>
-  <button class="tab-btn" id="btn-appSettingsTab" style="display: none;" onclick="switchTab('appSettingsTab', this)"><i class="fa-solid fa-gears"></i> Application Settings</button>
 </div>
 
 <div class="container">
@@ -812,7 +595,7 @@
         <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--atmos-navy); text-transform: uppercase;">
           <i class="fa-solid fa-shield-halved" style="color: var(--atmos-red); margin-right: 6px;"></i> Staff Controls Provided by Admin
         </h3>
-        
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Authorized operations for operating balance modifications and receivable settlements.</p>
       </div>
 
       <div style="background: white; padding: 16px; border-radius: var(--radius-md); margin-bottom: 16px; border: 1px solid var(--border);">
@@ -843,7 +626,7 @@
         <h4 style="font-size: 0.9rem; font-weight: 800; color: var(--atmos-navy); margin-bottom: 10px;">
           <i class="fa-solid fa-hand-holding-dollar" style="color: var(--accent-purple);"></i> Collect / Settle Receivables (Editable Log)
         </h4>
-        
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 10px;">Select an unpaid receivable from the list below to settle into Cash Drawer or Bank/UPI.</p>
         
         <div style="overflow-x: auto; margin-bottom: 12px;">
           <table>
@@ -881,7 +664,7 @@
         <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy);"><i class="fa-solid fa-sliders" style="color: var(--accent-green); margin-right: 6px;"></i> Monthly Opening Balance Summary</h3>
         <div class="month-picker-box"><label>Select Month:</label><input type="month" id="staffOpeningBalMonthPicker" onchange="renderStaffOpeningBalSummary()"></div>
       </div>
-      
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">Opening balances configured by Admin for the selected month.</p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
         <div style="background:white; padding:14px; border-radius:var(--radius-md); border:1px solid var(--border);"><span style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Cash Drawer</span><div id="staffObCash" style="font-size:1.2rem; font-weight:800; color:var(--accent-green);">₹0.00</div></div>
         <div style="background:white; padding:14px; border-radius:var(--radius-md); border:1px solid var(--border);"><span style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Bank / UPI</span><div id="staffObBank" style="font-size:1.2rem; font-weight:800; color:var(--primary);">₹0.00</div></div>
@@ -896,7 +679,7 @@
         <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--atmos-navy); text-transform: uppercase;">
           <i class="fa-solid fa-concierge-bell" style="color: var(--atmos-red); margin-right: 6px;"></i> Master Service Catalogue
         </h3>
-        
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Shared service catalog. Add new services available to all staff and admin.</p>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
@@ -942,7 +725,7 @@
     <div class="support-card">
       <div class="support-icon"><i class="fa-solid fa-headset"></i></div>
       <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 4px;">Need Operational Support?</h3>
-      
+      <p style="font-size: 0.8rem; color: var(--text-muted); max-width: 340px; margin: 0 auto 12px;">Contact system administration during working hours.</p>
       <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
         <a href="https://wa.me/918089278115" target="_blank" class="support-btn-outline" style="border-color: #10b981; color: #059669;">
           <i class="fa-brands fa-whatsapp"></i> 8089278115 (WhatsApp)
@@ -1087,7 +870,9 @@
             </div>
           </div>
         </div>
-        
+        <div style="font-size: 0.75rem; color: var(--text-muted); background: white; padding: 10px; border-radius: var(--radius-md); margin-top: 14px; border: 1px solid var(--border);">
+          <i class="fa-solid fa-circle-info"></i> Each month tracks Day 1 to the last calendar day. Starts at zero automatically for new months.
+        </div>
       </div>
 
     </div>
@@ -1139,7 +924,7 @@
           <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy);">
             <i class="fa-solid fa-building-columns" style="color: var(--atmos-red); margin-right: 6px;"></i> Shop Operating Balances
           </h3>
-          
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Log shop operating expenses paid strictly for shop overhead domain.</p>
         </div>
         <div class="month-picker-box">
           <label>Operating Month:</label>
@@ -1268,7 +1053,9 @@
       <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 6px;">
         Internal Cash Transfers (Strictly Separate Domain)
       </h3>
-      
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+        Cash transferred between the Drawer and Bank is an internal transfer. These transfers only update the Bank and Drawer Balance.
+      </p>
 
       <form onsubmit="recordInternalTransfer(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; align-items: flex-end;">
         <div class="form-group" style="margin: 0;">
@@ -1328,7 +1115,9 @@
       <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 6px;">
         <i class="fa-solid fa-user-shield" style="color: #10B981; margin-right: 6px;"></i> Admin Fund Transfers
       </h3>
-      
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+        Record fund movements between the Shop and Admin. Transfer to Admin reduces the selected source account (Bank/UPI or Cash Drawer — no profit impact). Received from Admin increases Bank/UPI balance and reduces cumulative profit. Deleted transfers stay deleted and are never recreated.
+      </p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
         <form onsubmit="recordAdminTransfer(event, 'TransferToAdmin')" style="background: #f0fdf4; padding: 16px; border-radius: var(--radius-md); border: 1px solid #d1fae5;">
           <h4 style="font-size: 0.95rem; font-weight: 800; color: #10B981; margin-bottom: 12px;">
@@ -1525,7 +1314,7 @@
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
         <div>
           <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--atmos-navy);">Monthly Financial Statement</h3>
-          
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Consolidated monthly ledger excluding internal drawer transfers.</p>
         </div>
 
         <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
@@ -1534,7 +1323,6 @@
             <label>Select Month:</label>
             <input type="month" id="reportMonthPicker" onchange="generateFinancialReport()">
           </div>
-          <div class="month-picker-box"><i class="fa-solid fa-calendar-day" style="color: var(--atmos-navy);"></i><label>Daily PDF Date:</label><input type="date" id="dailyReportDatePicker"></div>
           <button class="btn-pdf" onclick="exportReportPDF('daily')"><i class="fa-solid fa-file-pdf"></i> Daily PDF</button>
           <button class="btn-pdf" onclick="exportReportPDF('monthly')" style="background: var(--atmos-navy);"><i class="fa-solid fa-file-pdf"></i> Monthly PDF</button>
         </div>
@@ -1594,7 +1382,6 @@
   <div id="adminTab" class="tab-content">
 
     <div class="section-header admin-header"><i class="fa-solid fa-user-shield"></i> Administration & Controls
-      <span id="adminBusinessIdBadge" style="margin-left: auto; font-size: 0.7rem; background: var(--bg); border: 1px solid var(--border); padding: 4px 10px; border-radius: 12px; font-weight: 700; color: var(--text-muted); text-transform: none; letter-spacing: 0;"></span>
     </div>
 
     <!-- HR MONTHLY MANAGEMENT FINANCIAL OVERVIEW (ADMIN SECTION) -->
@@ -1604,7 +1391,7 @@
           <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy);">
             <i class="fa-solid fa-chart-pie" style="color: var(--accent-green); margin-right: 6px;"></i> HR Monthly Financial Management
           </h3>
-          
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Overview of collections, expenses (including Salary), net balance, and cumulative overall profit. Cumulative profit = Σ(Service Charges − Expenses − Received from Admin) across all months.</p>
         </div>
         <div class="month-picker-box">
           <label>Select Month & Year:</label>
@@ -1637,7 +1424,9 @@
       <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 6px;">
         <i class="fa-solid fa-clock-rotate-left" style="color: var(--accent-amber); margin-right: 6px;"></i> Historical Monthly Financial Data Entry
       </h3>
-      
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+        Enter historical monthly totals for previous months/years where detailed transaction data is not available. Historical Net Balance = Service Charge - Expense. This contributes to cumulative profit without creating fake transactions.
+      </p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
         <form onsubmit="saveHistoricalMonth(event)" style="display: grid; grid-template-columns: 1fr; gap: 4px;">
           <div class="form-group" style="margin-bottom: 10px;">
@@ -1679,7 +1468,9 @@
       <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 6px;">
         <i class="fa-solid fa-lock" style="color: var(--atmos-red); margin-right: 6px;"></i> Admin Control - Month Closing
       </h3>
-      
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+        Review the month's financial summary before closing. A new calendar month does NOT automatically close the previous month — closing is always manual. Once closed, the month's records become locked. You can reopen a closed month to make corrections if needed.
+      </p>
       
       <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;">
         <div class="month-picker-box">
@@ -1706,7 +1497,7 @@
           <div style="background:white; padding:10px 12px; border-radius:8px; border:1px solid var(--border);"><span style="font-size:0.65rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Admin Fund Transfers (Net)</span><div id="mcReviewAdminTransfers" style="font-size:1.05rem; font-weight:800; color:#10B981;">₹0.00</div></div>
           <div style="background:var(--accent-amber-bg); padding:10px 12px; border-radius:8px; border:1px solid #fde68a;"><span style="font-size:0.65rem; font-weight:800; color:var(--accent-amber); text-transform:uppercase;">Net Profit</span><div id="mcReviewNetProfit" style="font-size:1.2rem; font-weight:900; color:var(--atmos-navy);">₹0.00</div></div>
         </div>
-        
+        <p style="font-size:0.75rem; color:var(--text-muted); margin-top:10px;"><i class="fa-solid fa-circle-info"></i> Net Profit = Total Service Charge − Total Expenses (including Salary). Admin Fund Transfers do not affect profit. Review and correct any entries above before closing.</p>
       </div>
 
       <div id="pendingReceivableBanner" style="display: none; background: #f3e8ff; border: 1px solid #7c3aed; padding: 10px 14px; border-radius: var(--radius-md); font-size: 0.85rem; font-weight: 800; color: #6b21a8; margin-top: 10px;">
@@ -1725,7 +1516,9 @@
           <input type="month" id="salaryMonthPicker" onchange="renderStaffSalaryTable()">
         </div>
       </div>
-      
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; color: var(--atmos-navy);">
+        Configure basic salary and incentive % independently for each month. Incentive: set % (0–100) of eligible collections exceeding basic salary. Attendance below 89% triggers an adjustable deduction. Click "Finalize" to record salary as a Shop Expense (Salary / Salary Advance).
+      </p>
       <div style="overflow-x: auto;">
         <table>
           <thead>
@@ -1758,7 +1551,7 @@
           <input type="month" id="openingBalMonthPicker" onchange="loadAdminOpeningBalancesForPicker()">
         </div>
       </div>
-      
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">Set the actual starting balances for physical cash drawer, bank/UPI account, and credit receivables. No default is applied — enter the real opening balance (e.g. Cash ₹2,000 + Bank ₹2,000 + Receivables ₹1,000 = ₹5,000 total).</p>
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 14px;">
         <div class="form-group">
@@ -1861,7 +1654,7 @@
             <input type="month" id="staffBreakdownMonthPicker" onchange="renderStaffBreakdown()">
           </div>
         </div>
-        
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">Evaluate total service revenues collected individually by each staff member for the selected month.</p>
         
         <div id="staffBreakdownCardsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;"></div>
       </div>
@@ -1877,7 +1670,7 @@
             <input type="month" id="analyticsMonthPicker" onchange="initThreeAnalyticsCharts()">
           </div>
         </div>
-        
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Analytical graphs tracking daily growth, service interactions, and staff service volume for the selected month.</p>
 
         <div class="grid-charts">
           <div class="chart-box">
@@ -1946,7 +1739,7 @@
         <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 6px;">
           <i class="fa-solid fa-cloud-arrow-up" style="color: var(--primary); margin-right: 6px;"></i> Firebase Realtime Cloud Database Live Sync
         </h3>
-        
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Connect all devices live across laptops, mobile phones, Chrome, Firefox, and Edge.</p>
         
         <div class="form-group">
           <label>Firebase Database URL</label>
@@ -1960,7 +1753,9 @@
         <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 6px;">
           <i class="fa-solid fa-image" style="color: var(--atmos-red); margin-right: 6px;"></i> Shop Logo Management
         </h3>
-        
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+          Upload a logo image from your gallery. The logo appears on CSC invoices and remains until replaced with another image.
+        </p>
         <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
           <div id="shopLogoPreviewBox" style="width: 130px; height: 130px; border: 2px dashed var(--border); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--bg); overflow: hidden;">
             <span id="shopLogoPlaceholder" style="color: var(--text-muted); font-size: 0.75rem; font-weight: 700;">No Logo</span>
@@ -2141,124 +1936,6 @@
       </div>
     </div>
 
-  </div>
-
-  <!-- TAB 9: APPLICATION SETTINGS (MAIN PLATFORM ADMIN ONLY) -->
-  <div id="appSettingsTab" class="tab-content">
-    <div class="section-header admin-header"><i class="fa-solid fa-gears"></i> Application Settings — Platform Administration</div>
-
-    <!-- PLATFORM BRANDING -->
-    <div class="app-card" style="border-left: 5px solid var(--primary); margin-bottom: 24px;">
-      <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 12px;"><i class="fa-solid fa-palette" style="color: var(--primary); margin-right: 6px;"></i> Platform Branding</h3>
-      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;">
-        <div id="platformLogoPreview" style="width: 120px; height: 120px; border: 2px dashed var(--border); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--bg);">
-          <i class="fa-solid fa-image" style="font-size: 1.5rem; color: var(--text-muted);"></i>
-        </div>
-        <div style="flex: 1; min-width: 200px;">
-          <div class="form-group"><label>Platform / Business Name</label><input type="text" id="platformNameInput" placeholder="Platform Name"></div>
-          <div class="form-group"><label>Motto / Caption</label><input type="text" id="platformMottoInput" placeholder="Platform motto"></div>
-          <div class="form-group"><label>Platform Logo Upload</label><input type="file" id="platformLogoFile" accept="image/*" onchange="previewPlatformLogo(event)"></div>
-          <button class="btn-primary" onclick="savePlatformBranding()" style="width: auto;"><i class="fa-solid fa-save"></i> Save Platform Branding</button>
-        </div>
-      </div>
-    
-    <div class="app-card" style="margin-top: 16px;">
-      <h3 style="font-size: 0.9rem; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">User Account Migration</h3>
-      <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px;">Create Firebase Auth accounts for existing business users (admin and staff) so they can log in with the new secure authentication system.</p>
-      <button class="btn btn-primary" style="width: 100%;" onclick="migrateExistingUsersAuth()">Create Auth Accounts for Existing Users</button>
-    </div></div>
-
-    <!-- PLATFORM SETTINGS -->
-    <div class="app-card" style="border-left: 5px solid var(--accent-amber); margin-bottom: 24px;">
-      <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 12px;"><i class="fa-solid fa-sliders" style="color: var(--accent-amber); margin-right: 6px;"></i> Platform Settings</h3>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <div class="form-group"><label>Maximum Number of Businesses</label><input type="number" id="maxBusinessesInput" min="1" placeholder="e.g. 25"></div>
-        <div class="form-group"><label>Free Trial Duration (Days)</label><input type="number" id="trialDurationInput" min="1" placeholder="e.g. 14"></div>
-        <div class="form-group"><label>Admin WhatsApp Contact Number</label><input type="text" id="adminWhatsAppInput" placeholder="e.g. 918089278115"></div>
-        <div class="form-group"><label>UPI Payment ID (Internal)</label><input type="text" id="upiIdInput" placeholder="Internal UPI ID" style="background: var(--bg);"></div>
-      </div>
-      <button class="btn-primary" onclick="savePlatformSettings()" style="width: auto; margin-top: 8px;"><i class="fa-solid fa-save"></i> Save Platform Settings</button>
-    </div>
-
-    <!-- REGISTERED BUSINESSES -->
-    <div class="app-card" style="border-left: 5px solid var(--accent-green); margin-bottom: 24px;">
-      <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 12px;"><i class="fa-solid fa-building" style="color: var(--accent-green); margin-right: 6px;"></i> Registered Businesses</h3>
-      <div style="overflow-x: auto;">
-        <table class="data-table" style="width: 100%; font-size: 0.8rem;">
-          <thead><tr style="background: var(--bg);">
-            <th style="padding: 8px; text-align: left;">Business ID</th>
-            <th style="padding: 8px; text-align: left;">Business Name</th>
-            <th style="padding: 8px; text-align: left;">Admin</th>
-            <th style="padding: 8px; text-align: left;">Category</th>
-            <th style="padding: 8px; text-align: left;">Registered</th>
-            <th style="padding: 8px; text-align: left;">Last Login</th>
-            <th style="padding: 8px; text-align: left;">Status</th>
-            <th style="padding: 8px; text-align: left;">Subscription</th>
-            <th style="padding: 8px; text-align: left;">Sub End</th>
-            <th style="padding: 8px; text-align: left;">Days Left</th>
-            <th style="padding: 8px; text-align: center;">Actions</th>
-          </tr></thead>
-          <tbody id="registeredBusinessesTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- SUBSCRIPTION MANAGEMENT FOR SELECTED BUSINESS -->
-    <div class="app-card" style="border-left: 5px solid var(--accent-purple); margin-bottom: 24px;">
-      <h3 style="font-size: 1.05rem; font-weight: 900; color: var(--atmos-navy); margin-bottom: 12px;"><i class="fa-solid fa-credit-card" style="color: var(--accent-purple); margin-right: 6px;"></i> Subscription Management</h3>
-      <div id="subMgmtArea" style="font-size: 0.85rem; color: var(--text-muted);">Select a business from the table above to manage its subscription.</div>
-    </div>
-  </div>
-
-  <!-- SUBSCRIPTION / UPGRADE MODAL -->
-  <div id="subscriptionModal" class="modal" style="display: none;">
-    <div class="modal-card" style="max-width: 520px;">
-      <div style="text-align: center; margin-bottom: 20px;">
-        <h2 style="font-size: 1.2rem; font-weight: 900; color: var(--atmos-navy);">Upgrade to Premium</h2>
-        <p style="font-size: 0.8rem; color: var(--text-muted);">Select a subscription plan to continue</p>
-      </div>
-      <div id="subscriptionPlans" style="display: grid; gap: 10px; margin-bottom: 20px;">
-        <div class="sub-plan-card" onclick="selectPlan('1month', 111)" data-plan="1month">
-          <div><strong>1 Month</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">30 days access</span></div>
-          <div style="font-size: 1.3rem; font-weight: 900; color: var(--primary);">₹111</div>
-        </div>
-        <div class="sub-plan-card" onclick="selectPlan('3months', 333)" data-plan="3months">
-          <div><strong>3 Months</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">90 days access</span></div>
-          <div style="font-size: 1.3rem; font-weight: 900; color: var(--primary);">₹333</div>
-        </div>
-        <div class="sub-plan-card" onclick="selectPlan('6months', 666)" data-plan="6months">
-          <div><strong>6 Months</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">180 days access</span></div>
-          <div style="font-size: 1.3rem; font-weight: 900; color: var(--primary);">₹666</div>
-        </div>
-        <div class="sub-plan-card" onclick="selectPlan('1year', 111141)" data-plan="1year">
-          <div><strong>1 Year</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">365 days access</span></div>
-          <div style="font-size: 1.3rem; font-weight: 900; color: var(--primary);">₹111,141</div>
-        </div>
-      </div>
-      <div id="paymentSection" style="display: none;">
-        <div style="background: var(--bg); padding: 16px; border-radius: var(--radius-md); margin-bottom: 16px;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span style="font-weight: 700;">Selected Plan:</span><span id="selectedPlanName" style="font-weight: 800; color: var(--primary);"></span></div>
-          <div style="display: flex; justify-content: space-between;"><span style="font-weight: 700;">Amount:</span><span id="selectedPlanAmount" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-green);"></span></div>
-        </div>
-        <button class="btn-primary" onclick="initiateUPIPayment()" style="width: 100%; margin-bottom: 12px;"><i class="fa-solid fa-mobile-screen"></i> Pay via UPI</button>
-        <div style="background: #fffbeb; border: 1px solid #fde68a; padding: 12px; border-radius: var(--radius-md); font-size: 0.78rem; color: #92400e; line-height: 1.5;">
-          <strong>Payment Instructions:</strong><br>
-          1. Complete the UPI payment.<br>
-          2. Take a screenshot of the payment success.<br>
-          3. Share the screenshot with Admin WhatsApp for verification.<br>
-          4. Wait for Admin to verify and activate your subscription.<br>
-          <span style="font-weight: 700;">Your subscription will NOT be activated automatically.</span>
-        </div>
-        <div style="margin-top: 12px;">
-          <label style="font-size: 0.8rem; font-weight: 700;">Upload Payment Screenshot (Optional)</label>
-          <input type="file" id="paymentScreenshotInput" accept="image/*" style="margin-top: 4px;">
-        </div>
-        <button class="btn-primary" onclick="submitPaymentProof()" style="width: 100%; margin-top: 12px; background: var(--accent-green);"><i class="fa-brands fa-whatsapp"></i> Share Payment Proof with Admin</button>
-      </div>
-      <div style="text-align: center; margin-top: 12px;">
-        <a style="font-size: 0.8rem; color: var(--text-muted); cursor: pointer; font-weight: 700;" onclick="closeSubscriptionModal()">Cancel</a>
-      </div>
-    </div>
   </div>
 
   <!-- FOOTER -->
@@ -2566,7 +2243,7 @@
     </div>
     <div style="flex:1; border:1px solid #e2e8f0; padding:8px; border-radius:6px; background:#f8fafc;">
       <span style="font-size:9px; color:#64748b; font-weight:bold;">NET BALANCE</span>
-      <div id="pdfValNet" style="font-size:14px; font-weight:bold; color:#059669;">₹0.00</div>
+      <div id="pdfValNet" style="font-size:14px; font-weight:bold; color:#2563eb;">₹0.00</div>
     </div>
   </div>
 
@@ -2683,171 +2360,10 @@ const FIREBASE_CONFIG = {
     initDefaultDates();
     loadLocalData();
     updateShopLogoDisplays();
-    if (dedupeEntryIds()) saveData();
+    if (dedupeEntryIds()) saveData(); /* repair duplicate ids saved by the old version */
     setupFirebaseSync();
     renderLoginDropdown();
-    initMultiTenantPlatform();
   });
-
-  function setMTLoginMode(mode) {
-    var adminBtn = document.getElementById('mtLoginTabAdmin');
-    var staffBtn = document.getElementById('mtLoginTabStaff');
-    var adminForm = document.getElementById('mtAdminLoginForm');
-    var staffForm = document.getElementById('mtStaffLoginForm');
-    if (mode === 'admin') { adminBtn.style.background='white'; adminBtn.style.color='var(--atmos-navy)'; staffBtn.style.background='transparent'; staffBtn.style.color='var(--text-muted)'; adminForm.style.display='block'; staffForm.style.display='none'; }
-    else { staffBtn.style.background='white'; staffBtn.style.color='var(--atmos-navy)'; adminBtn.style.background='transparent'; adminBtn.style.color='var(--text-muted)'; adminForm.style.display='none'; staffForm.style.display='block'; }
-  }
-
-  function setupPlatformAdmin() {
-    var email = prompt('Enter the Platform Admin email (default: admin@fintrack.platform):');
-    if (!email) email = 'admin@fintrack.platform';
-    var pass = prompt('Enter the Platform Admin password:');
-    if (!pass) return alert('Password is required.');
-    firebase.auth().createUserWithEmailAndPassword(email, pass).then(function(userCred) {
-      var uid = userCred.user.uid;
-      var userMapRef = firebase.database().ref(PLATFORM_NODE + '/userMap/' + uid);
-      userMapRef.set({ isPlatformAdmin: true, role: 'SuperAdmin', businessId: platformSettings.defaultBusinessId || 'BIZ-DEFAULT', email: email, name: 'Platform Admin' }).then(function() {
-        // Also save the credentials in platform settings
-        platformSettings.superAdminEmail = email;
-        var psRef = firebase.database().ref(PLATFORM_NODE + '/platformSettings');
-        psRef.update({ superAdminEmail: email });
-        alert('Platform Admin account created successfully! You can now login with these credentials.');
-        showWelcomePage();
-      });
-    }).catch(function(error) {
-      if (error.code === 'auth/email-already-in-use') {
-        alert('This email is already registered. Please login with it instead.');
-      } else {
-        alert('Setup failed: ' + error.message);
-      }
-    });
-  }
-
-  function migrateExistingUsersAuth() {
-    // Create Firebase Auth accounts for all existing users in BIZ-DEFAULT
-    var bid = platformSettings.defaultBusinessId || 'BIZ-DEFAULT';
-    var bizRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid);
-    bizRef.once('value').then(function(snap) {
-      var biz = snap.val();
-      if (!biz || !biz.data || !biz.data.userAccounts) { alert('No existing users found to migrate.'); return; }
-
-      var users = biz.data.userAccounts;
-      var created = 0, failed = 0, skipped = 0;
-      var total = users.length;
-      var processed = 0;
-
-      users.forEach(function(u) {
-        // Skip the platform admin (already has an Auth account)
-        if (u.email && u.email.toLowerCase() === (platformSettings.superAdminEmail || 'admin@fintrack.platform').toLowerCase()) {
-          skipped++; processed++;
-          if (processed === total) finishMigration();
-          return;
-        }
-
-        // Construct email: for admin, use their actual email; for staff, use username@bid.fintrack
-        var email;
-        if (u.role === 'Admin' && u.email) {
-          email = u.email;
-        } else {
-          var sanitized = (u.name || '').replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-          email = sanitized + '@' + bid + '.fintrack';
-        }
-
-        if (!email || !u.password) { skipped++; processed++; if (processed === total) finishMigration(); return; }
-
-        // Create Auth account using secondary app (so it doesn't sign out the platform admin)
-        var secApp = firebase.initializeApp(firebase.app().options, 'mig-' + Date.now() + '-' + processed);
-        secApp.auth().createUserWithEmailAndPassword(email, u.password).then(function(userCred) {
-          var uid = userCred.user.uid;
-          secApp.auth().signOut(); secApp.delete();
-          // Write userMap entry
-          var userMapRef = firebase.database().ref(PLATFORM_NODE + '/userMap/' + uid);
-          return userMapRef.set({ businessId: bid, role: u.role || 'Staff', isPlatformAdmin: false, email: email, name: u.name || '' });
-        }).then(function() {
-          created++; processed++;
-          if (processed === total) finishMigration();
-        }).catch(function(err) {
-          secApp.delete();
-          if (err.code === 'auth/email-already-in-use') { skipped++; }
-          else { failed++; console.error('Failed for ' + email + ':', err.message); }
-          processed++;
-          if (processed === total) finishMigration();
-        });
-      });
-
-      function finishMigration() {
-        var msg = 'Auth account migration complete!\n\nCreated: ' + created + '\nSkipped (already exist): ' + skipped + '\nFailed: ' + failed;
-        if (failed > 0) msg += '\n\nSome users could not be migrated. Check the console for details.';
-        alert(msg);
-      }
-    });
-  }
-
-  function initMultiTenantPlatform() {
-    // Set up Firebase Auth state listener
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (window._adminSetupInProgress) return;
-      if (user) {
-        // User is signed in — restore session
-        var userMapRef = firebase.database().ref(PLATFORM_NODE + '/userMap/' + user.uid);
-        userMapRef.once('value').then(function(snap) {
-          var userInfo = snap.val();
-          if (!userInfo) {
-            // Check if platform admin (first login)
-            var email = (user.email || '').toLowerCase();
-            if (email === (platformSettings.superAdminEmail || 'admin@fintrack.platform')) {
-              userMapRef.set({ isPlatformAdmin: true, role: 'SuperAdmin', businessId: platformSettings.defaultBusinessId || 'BIZ-DEFAULT', email: email, name: 'Platform Admin' });
-              currentRole = 'SuperAdmin'; isPlatformAdmin = true;
-              currentBusinessId = platformSettings.defaultBusinessId || 'BIZ-DEFAULT';
-              currentUser = { name: 'Platform Admin', role: 'SuperAdmin', email: email };
-              document.getElementById('loginModal').style.display = 'none';
-              document.getElementById('welcomePage').style.display = 'none';
-              showPlatformAdminUI(); loadPlatformData();
-            } else {
-              firebase.auth().signOut();
-              showWelcomePage();
-            }
-            return;
-          }
-          if (userInfo.isPlatformAdmin) {
-            currentRole = 'SuperAdmin'; isPlatformAdmin = true;
-            currentBusinessId = userInfo.businessId || platformSettings.defaultBusinessId || 'BIZ-DEFAULT';
-            currentUser = { name: 'Platform Admin', role: 'SuperAdmin', email: user.email };
-            document.getElementById('loginModal').style.display = 'none';
-            document.getElementById('welcomePage').style.display = 'none';
-            showPlatformAdminUI(); loadPlatformData();
-            return;
-          }
-          // Business user
-          var bid = userInfo.businessId;
-          var bizRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid);
-          bizRef.once('value').then(function(bizSnap) {
-            var biz = bizSnap.val();
-            if (!biz) { firebase.auth().signOut(); showWelcomePage(); return; }
-            if (biz.subscription && biz.subscription.status === 'Blocked') { firebase.auth().signOut(); alert('Your business account has been blocked.'); showWelcomePage(); return; }
-            var usr = biz.data.userAccounts.find(function(u) { return u.email && u.email.toLowerCase() === (user.email || '').toLowerCase(); });
-            if (!usr) usr = { name: userInfo.name, role: userInfo.role, email: user.email || '' };
-            loginToBusiness(bid, usr, biz);
-          });
-        });
-      } else {
-        // User is signed out — show welcome page
-        currentBusinessId = null; currentRole = null; isPlatformAdmin = false; currentUser = null;
-        showWelcomePage();
-      }
-    });
-
-    // Load platform settings (with default fallback)
-    updateWelcomeTrialDuration();
-    if (typeof firebase !== 'undefined' && firebase.database) {
-      // Try to load platform settings (may fail if not authenticated — that's OK)
-      var psRef = firebase.database().ref(PLATFORM_NODE + '/platformSettings');
-      psRef.once('value').then(function(snap) {
-        var ps = snap.val();
-        if (ps) { platformSettings = { ...platformSettings, ...ps }; updateWelcomeTrialDuration(); updatePlatformSettingsUI(); }
-      }).catch(function() {});
-    }
-  }
 
   function initDefaultDates() {
     const todayStr = getISTDateStr();
@@ -2881,8 +2397,6 @@ const FIREBASE_CONFIG = {
     document.getElementById('historicalMonthPicker').value = monthStr;
     var staffObPicker = document.getElementById('staffOpeningBalMonthPicker');
     if (staffObPicker) staffObPicker.value = monthStr;
-    var dailyReportPicker = document.getElementById('dailyReportDatePicker');
-    if (dailyReportPicker) dailyReportPicker.value = todayStr;
   }
 
   /* LOCAL & CLOUD STORAGE HANDLING */
@@ -2972,7 +2486,6 @@ const FIREBASE_CONFIG = {
   }
 
   function saveData() {
-    if (currentBusinessId) { saveBusinessData(); return; }
     localStorage.setItem('ATMOS_HUB_DATA_2026', JSON.stringify(appData));
     if (isFirebaseSyncActive && firebaseDbRef) {
       firebaseDbRef.set(convertToLegacyFormat()).catch(err => console.error("Firebase sync write error:", err));
@@ -2986,12 +2499,8 @@ const FIREBASE_CONFIG = {
       if (!firebase.apps.length) {
         firebase.initializeApp(customUrl ? { databaseURL: customUrl } : FIREBASE_CONFIG);
       }
-      /* Multi-tenant: old single-tenant listener disabled — per-business sync handled by setupBusinessFirebaseSync */
-      var badge = document.getElementById('cloudSyncStatusBadge');
-      if (badge) { badge.className = "sync-badge sync-online"; badge.innerHTML = '<i class="fa-solid fa-cloud"></i> Cloud Ready'; }
-      isFirebaseSyncActive = true;
-      /* Keep old ref for migration purposes only */
       firebaseDbRef = firebase.database().ref('atmos_hub_data_v12');
+
       firebaseDbRef.on('value', (snapshot) => {
         const val = snapshot.val();
         const badge = document.getElementById('cloudSyncStatusBadge');
@@ -3380,8 +2889,6 @@ const FIREBASE_CONFIG = {
   }
 
   function renderLoginDropdown() {
-    var sel = document.getElementById('loginUserSelect');
-    if (!sel) return;
     const select = document.getElementById('loginUserSelect');
     select.innerHTML = '';
     const filteredUsers = appData.users.filter(u => currentLoginMode === 'Admin' ? u.role === 'Admin' : u.role === 'Staff');
@@ -3496,7 +3003,6 @@ const FIREBASE_CONFIG = {
 
   /* NAVIGATION & TAB SWITCHING */
   function switchTab(tabId, btnElem) {
-    if (!isPlatformAdmin && currentBusinessId) { var info = getSubscriptionInfo(); if (info.status === 'Subscription Expired' && tabId !== 'dashboardTab') { alert('Your subscription has expired. Please upgrade to access this section.'); openSubscriptionModal(); return; } }
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.drawer-menu-item').forEach(el => el.classList.remove('active'));
@@ -5005,101 +4511,39 @@ const FIREBASE_CONFIG = {
 
     const netBal = rev - exp;
 
-    document.getElementById('rptRevenue').style.color = '#059669'; document.getElementById('rptRevenue').innerText = `₹${rev.toFixed(2)}`;
-    document.getElementById('rptExpenses').style.color = '#e11d48'; document.getElementById('rptExpenses').innerText = `₹${exp.toFixed(2)}`;
-    document.getElementById('rptDeptFee').style.color = '#d97706'; document.getElementById('rptDeptFee').innerText = `₹${dept.toFixed(2)}`;
-    document.getElementById('rptNetBalance').style.color = '#059669'; document.getElementById('rptNetBalance').innerText = `₹${netBal.toFixed(2)}`;
-  }
-
-  function getBalancesUpToDate(month, upToDateStr, inclusive) {
-    var op = appData.openingBalances[month] || { cash: 0, bank: 0, credit: 0 };
-    var cash = parseFloat(op.cash || 0), bank = parseFloat(op.bank || 0), credit = parseFloat(op.credit || 0);
-    var adminSent = 0, adminRecv = 0;
-    var dateOk = function(d) { return inclusive ? (d <= upToDateStr) : (d < upToDateStr); };
-    appData.serviceLog.forEach(function(s) {
-      if (s.date.substring(0, 7) !== month || !dateOk(s.date)) return;
-      var total = parseFloat(s.total || 0), deptFee = parseFloat(s.deptFee || 0);
-      if (deptFee > 0) bank -= deptFee;
-      if (s.isSplit || s.payMode === 'Split Payment') { cash += parseFloat(s.splitCash || 0); bank += parseFloat(s.splitBank || 0); credit += parseFloat(s.splitReceivable || 0); }
-      else { if (s.payMode === 'Cash Drawer') cash += total; else if (s.payMode === 'Bank/UPI') bank += total; else if (s.payMode === 'Receivables/Credit') credit += total; }
-    });
-    appData.expenseLog.forEach(function(e) {
-      if (e.date.substring(0, 7) !== month || !dateOk(e.date)) return;
-      var amt = parseFloat(e.amount || 0);
-      if (e.payMode === 'Cash Drawer') cash -= amt; else if (e.payMode === 'Bank/UPI') bank -= amt;
-    });
-    appData.transferLog.forEach(function(t) {
-      if (t.date.substring(0, 7) !== month || !dateOk(t.date)) return;
-      var amt = parseFloat(t.amount || 0);
-      if (t.direction === 'CashToBank') { cash -= amt; bank += amt; } else if (t.direction === 'BankToCash') { bank -= amt; cash += amt; }
-    });
-    (appData.adminTransfers || []).forEach(function(at) {
-      if ((at.date || '').substring(0, 7) !== month || !dateOk(at.date)) return;
-      var amt = parseFloat(at.amount || 0);
-      if (at.type === 'TransferToAdmin') { adminSent += amt; var src = at.source || 'Bank/UPI'; if (src === 'Cash Drawer') cash -= amt; else bank -= amt; }
-      else if (at.type === 'ReceivedFromAdmin') { adminRecv += amt; bank += amt; }
-    });
-    return { cash: cash, bank: bank, credit: credit, adminSent: adminSent, adminRecv: adminRecv, adminNet: adminSent - adminRecv, total: cash + bank + credit };
+    document.getElementById('rptRevenue').innerText = `₹${rev.toFixed(2)}`;
+    document.getElementById('rptExpenses').innerText = `₹${exp.toFixed(2)}`;
+    document.getElementById('rptDeptFee').innerText = `₹${dept.toFixed(2)}`;
+    document.getElementById('rptNetBalance').innerText = `₹${netBal.toFixed(2)}`;
   }
 
   function exportReportPDF(type) {
-    if (type === 'daily') { return exportDailyPDF(); }
     const month = document.getElementById('reportMonthPicker').value || getISTMonthStr();
-    document.getElementById('pdfReportTitle').innerText = 'MONTHLY FINANCIAL STATEMENT - ' + month;
-    document.getElementById('pdfReportDate').innerText = 'Generated on: ' + getISTDateTimeStr();
+    document.getElementById('pdfReportTitle').innerText = `${type.toUpperCase()} FINANCIAL STATEMENT - ${month}`;
+    document.getElementById('pdfReportDate').innerText = `Generated on: ${getISTDateTimeStr()}`;
+
     document.getElementById('pdfValRevenue').innerText = document.getElementById('rptRevenue').innerText;
     document.getElementById('pdfValExpenses').innerText = document.getElementById('rptExpenses').innerText;
     document.getElementById('pdfValDeptFee').innerText = document.getElementById('rptDeptFee').innerText;
     document.getElementById('pdfValNet').innerText = document.getElementById('rptNetBalance').innerText;
+
     const tbody = document.getElementById('pdfReportTableBody');
     tbody.innerHTML = document.getElementById('reportItemizedTable').innerHTML;
+
     const element = document.getElementById('pdfReportTemplate');
     element.style.display = 'block';
-    const opt = { margin: 0.5, filename: 'ATMOS_Financial_Report_' + month + '.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
-    html2pdf().set(opt).from(element).save().then(() => { element.style.display = 'none'; });
-  }
 
-  function exportDailyPDF() {
-    var dateStr = document.getElementById('dailyReportDatePicker').value || getISTDateStr();
-    var today = getISTDateStr();
-    var diffDays = Math.floor((new Date(today) - new Date(dateStr)) / 86400000);
-    if (diffDays > 60) { return alert('Daily PDF is only available for the last 60 days. For older periods, please refer to the Historical Monthly Financial Data section.'); }
-    var month = dateStr.substring(0, 7);
-    var opening = getBalancesUpToDate(month, dateStr, false);
-    var closing = getBalancesUpToDate(month, dateStr, true);
-    var dayServices = appData.serviceLog.filter(function(s) { return s.date === dateStr; });
-    var dayExpenses = appData.expenseLog.filter(function(e) { return e.date === dateStr; });
-    var txRows = '';
-    dayServices.forEach(function(s) {
-      txRows += '<tr><td style="padding:5px; border:1px solid #cbd5e1;">Service</td><td style="padding:5px; border:1px solid #cbd5e1;">' + (s.time || '') + '</td><td style="padding:5px; border:1px solid #cbd5e1;">' + s.desc + '</td><td style="padding:5px; border:1px solid #cbd5e1; text-align:right; color:#059669; font-weight:bold;">₹' + parseFloat(s.serviceCharge || 0).toFixed(2) + '</td><td style="padding:5px; border:1px solid #cbd5e1; text-align:right;">₹' + parseFloat(s.deptFee || 0).toFixed(2) + '</td><td style="padding:5px; border:1px solid #cbd5e1;">-</td></tr>';
+    const opt = {
+      margin: 0.5,
+      filename: `ATMOS_Financial_Report_${month}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save().then(() => {
+      element.style.display = 'none';
     });
-    dayExpenses.forEach(function(e) {
-      txRows += '<tr><td style="padding:5px; border:1px solid #cbd5e1;">Expense</td><td style="padding:5px; border:1px solid #cbd5e1;">' + (e.time || '') + '</td><td style="padding:5px; border:1px solid #cbd5e1;">' + e.desc + ' (' + e.category + ')</td><td style="padding:5px; border:1px solid #cbd5e1;">-</td><td style="padding:5px; border:1px solid #cbd5e1;">-</td><td style="padding:5px; border:1px solid #cbd5e1; text-align:right; color:#e11d48; font-weight:bold;">₹' + parseFloat(e.amount || 0).toFixed(2) + '</td></tr>';
-    });
-    if (txRows === '') txRows = '<tr><td colspan="6" style="padding:5px; border:1px solid #cbd5e1; text-align:center; color:#64748b;">No transactions on this date</td></tr>';
-    function balSection(label, b) {
-      return '<div style="margin-bottom:15px;"><h3 style="font-size:13px; color:#0B1E2D; margin-bottom:8px; border-bottom:1px solid #e2e8f0; padding-bottom:4px;">' + label + '</h3><div style="display:flex; gap:6px; flex-wrap:wrap;">' +
-        '<div style="flex:1; min-width:110px; border:1px solid #e2e8f0; padding:6px 8px; border-radius:4px; background:#f8fafc;"><span style="font-size:8px; color:#64748b; font-weight:bold;">CASH DRAWER</span><div style="font-size:12px; font-weight:bold; color:#059669;">₹' + b.cash.toFixed(2) + '</div></div>' +
-        '<div style="flex:1; min-width:110px; border:1px solid #e2e8f0; padding:6px 8px; border-radius:4px; background:#f8fafc;"><span style="font-size:8px; color:#64748b; font-weight:bold;">BANK / UPI</span><div style="font-size:12px; font-weight:bold; color:#2563eb;">₹' + b.bank.toFixed(2) + '</div></div>' +
-        '<div style="flex:1; min-width:110px; border:1px solid #e2e8f0; padding:6px 8px; border-radius:4px; background:#f8fafc;"><span style="font-size:8px; color:#64748b; font-weight:bold;">RECEIVABLES</span><div style="font-size:12px; font-weight:bold; color:#7c3aed;">₹' + b.credit.toFixed(2) + '</div></div>' +
-        '<div style="flex:1; min-width:110px; border:1px solid #e2e8f0; padding:6px 8px; border-radius:4px; background:#f8fafc;"><span style="font-size:8px; color:#64748b; font-weight:bold;">TRANSFER TO ADMIN</span><div style="font-size:12px; font-weight:bold; color:#10B981;">₹' + b.adminSent.toFixed(2) + '</div></div>' +
-        '<div style="flex:1; min-width:110px; border:1px solid #e2e8f0; padding:6px 8px; border-radius:4px; background:#f8fafc;"><span style="font-size:8px; color:#64748b; font-weight:bold;">RECEIVED FROM ADMIN</span><div style="font-size:12px; font-weight:bold; color:#F59E0B;">₹' + b.adminRecv.toFixed(2) + '</div></div>' +
-        '<div style="flex:1; min-width:110px; border:1px solid #fde68a; padding:6px 8px; border-radius:4px; background:#fffbeb;"><span style="font-size:8px; color:#64748b; font-weight:bold;">OVERALL TOTAL</span><div style="font-size:13px; font-weight:bold; color:#0B1E2D;">₹' + b.total.toFixed(2) + '</div></div>' +
-        '</div></div>';
-    }
-    var htmlContent = '<div style="padding:25px; font-family:Arial,sans-serif; color:#0f172a;">' +
-      '<div style="display:flex; justify-content:space-between; border-bottom:3px solid #0B1E2D; padding-bottom:10px; margin-bottom:15px;"><div><h1 style="font-size:18px; color:#0B1E2D; margin:0;">ATMOS DIGITAL SOLUTIONS</h1><p style="font-size:10px; color:#EE2B2E; font-weight:bold; margin:2px 0 0 0;">DAILY FINANCIAL STATEMENT</p></div><div style="text-align:right; font-size:10px; color:#64748b;"><p style="margin:0; font-weight:bold; color:#0B1E2D;">Date: ' + dateStr + '</p><p style="margin:2px 0 0 0;">Generated: ' + getISTDateTimeStr() + '</p></div></div>' +
-      balSection('OPENING BALANCE', opening) +
-      '<div style="margin-bottom:15px;"><h3 style="font-size:13px; color:#0B1E2D; margin-bottom:8px; border-bottom:1px solid #e2e8f0; padding-bottom:4px;">TRANSACTIONS ON ' + dateStr + '</h3><table style="width:100%; border-collapse:collapse; font-size:9px;"><thead><tr style="background:#f1f5f9;"><th style="padding:5px; border:1px solid #cbd5e1;">TYPE</th><th style="padding:5px; border:1px solid #cbd5e1;">TIME</th><th style="padding:5px; border:1px solid #cbd5e1;">DESCRIPTION</th><th style="padding:5px; border:1px solid #cbd5e1; text-align:right;">INCOME (₹)</th><th style="padding:5px; border:1px solid #cbd5e1; text-align:right;">DEPT FEE (₹)</th><th style="padding:5px; border:1px solid #cbd5e1; text-align:right;">EXPENSE (₹)</th></tr></thead><tbody>' + txRows + '</tbody></table></div>' +
-      balSection('CLOSING BALANCE', closing) +
-      '</div>';
-    var container = document.createElement('div');
-    container.style.position = 'absolute';
-    container.style.left = '-9999px';
-    container.innerHTML = htmlContent;
-    document.body.appendChild(container);
-    var opt = { margin: 0.5, filename: 'ATMOS_Daily_Report_' + dateStr + '.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
-    html2pdf().set(opt).from(container).save().then(function() { document.body.removeChild(container); });
   }
 
   /* ---------------------------------------------------
@@ -5183,16 +4627,6 @@ const FIREBASE_CONFIG = {
     const isClosed = !!appData.closedMonths[month];
 
     if (!isClosed) {
-      var adminSentClose = 0, adminRecvClose = 0;
-      (appData.adminTransfers || []).forEach(function(at) {
-        if ((at.date || '').substring(0, 7) !== month) return;
-        if (at.type === 'TransferToAdmin') adminSentClose += parseFloat(at.amount || 0);
-        else if (at.type === 'ReceivedFromAdmin') adminRecvClose += parseFloat(at.amount || 0);
-      });
-      var adminNetClose = adminSentClose - adminRecvClose;
-      if (Math.abs(adminNetClose) > 0.01) {
-        return alert('Cannot close month ' + month + '.\n\nThe Admin Fund Transfer net balance is ₹' + adminNetClose.toFixed(2) + '\n(Transferred to Admin: ₹' + adminSentClose.toFixed(2) + ', Received from Admin: ₹' + adminRecvClose.toFixed(2) + ').\n\nPlease reverse the pending transfer by adding a "Received from Admin" entry to balance the net to zero, then close the month. This ensures balances are correct after closing.');
-      }
       if (!confirm(`Are you sure you want to close month ${month}? Physical Cash and Bank balances will be settled to Admin Bank Account (set to zero) while Pending Receivables are preserved.`)) return;
 
       // Transfer Cash and Bank balances to Admin Account (Set to 0)
@@ -5881,56 +5315,18 @@ const FIREBASE_CONFIG = {
 
     if (!name || !pass) return alert("Please fill all required fields.");
 
-    var btn = document.querySelector('#addStaffModal .btn-primary');
-    if (btn) { btn.disabled = true; btn.innerText = 'Saving...'; }
-
     if (idx >= 0) {
-      // Editing existing staff — update password in Firebase Auth via secondary app
-      var oldPass = appData.users[idx].pass;
-      var sanitizedUser = name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-      var staffEmail = sanitizedUser + '@' + currentBusinessId + '.fintrack';
-      var secApp = firebase.initializeApp(firebase.app().options, 'sec-' + Date.now());
-      secApp.auth().signInWithEmailAndPassword(staffEmail, oldPass).then(function(uc) {
-        return uc.user.updatePassword(pass);
-      }).then(function() {
-        secApp.auth().signOut(); secApp.delete();
-        appData.users[idx].name = name; appData.users[idx].mobile = mobile; appData.users[idx].pass = pass;
-        saveData(); closeAddStaffModal(); renderLoginDropdown(); renderStaffPasswordTable();
-        if (btn) { btn.disabled = false; btn.innerText = 'Save'; }
-      }).catch(function(err) {
-        secApp.delete();
-        // Fallback: just update local data
-        appData.users[idx].name = name; appData.users[idx].mobile = mobile; appData.users[idx].pass = pass;
-        saveData(); closeAddStaffModal(); renderLoginDropdown(); renderStaffPasswordTable();
-        if (btn) { btn.disabled = false; btn.innerText = 'Save'; }
-      });
+      appData.users[idx].name = name;
+      appData.users[idx].mobile = mobile;
+      appData.users[idx].pass = pass;
     } else {
-      // New staff — create Firebase Auth account via secondary app
-      var sanitizedUser2 = name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-      var staffEmail2 = sanitizedUser2 + '@' + currentBusinessId + '.fintrack';
-      var secApp2 = firebase.initializeApp(firebase.app().options, 'sec-' + Date.now());
-      secApp2.auth().createUserWithEmailAndPassword(staffEmail2, pass).then(function(userCred) {
-        var staffUid = userCred.user.uid;
-        secApp2.auth().signOut(); secApp2.delete();
-        // Write userMap entry (admin is logged in on main app)
-        var userMapRef = firebase.database().ref(PLATFORM_NODE + '/userMap/' + staffUid);
-        return userMapRef.set({ businessId: currentBusinessId, role: 'Staff', isPlatformAdmin: false, email: staffEmail2, name: name });
-      }).then(function() {
-        appData.users.push({ name, role: 'Staff', pass, mobile });
-        saveData(); closeAddStaffModal(); renderLoginDropdown(); renderStaffPasswordTable();
-        if (btn) { btn.disabled = false; btn.innerText = 'Save'; }
-      }).catch(function(err) {
-        secApp2.delete();
-        if (err.code === 'auth/email-already-in-use') {
-          // Staff already has an Auth account — just add to local data
-          appData.users.push({ name, role: 'Staff', pass, mobile });
-          saveData(); closeAddStaffModal(); renderLoginDropdown(); renderStaffPasswordTable();
-        } else {
-          alert('Error creating staff account: ' + err.message);
-        }
-        if (btn) { btn.disabled = false; btn.innerText = 'Save'; }
-      });
+      appData.users.push({ name, role: 'Staff', pass, mobile });
     }
+
+    saveData();
+    closeAddStaffModal();
+    renderLoginDropdown();
+    renderStaffPasswordTable();
   }
 
   function deleteStaffUser(idx) {
@@ -6210,841 +5606,6 @@ const FIREBASE_CONFIG = {
   function toggleAttendanceMoreDetails() {
     switchTab('hrTab', document.getElementById('btn-hrTab'));
   }
-
-  /* === MULTI-TENANT PLATFORM LAYER === */
-  let currentBusinessId = null;
-  let currentRole = null;
-  let isPlatformAdmin = false;
-  let platformSettings = { maxBusinesses: 25, trialDuration: 14, adminWhatsApp: '918089278115', upiId: '8089278115@superyes', branding: { logo: '', name: 'FinTrack Business', motto: 'Fast. Secure. Seamless.' } };
-  let businessesRegistry = {};
-  let subscriptionWarningShown = false;
-  let selectedPlan = null;
-  let selectedPlanAmount = 0;
-  let regLogoDataUrl = '';
-  let platformLogoDataUrl = '';
-  let platformDbRef = null;
-  let businessDbRef = null;
-  let isMultiTenantMode = false;
-  const PLATFORM_NODE = 'fintrack_platform_v1';
-
-  function simpleHash(str) { let h = 0; for (let i = 0; i < str.length; i++) { h = ((h << 5) - h) + str.charCodeAt(i); h = h & h; } return 'h' + Math.abs(h).toString(36); }
-
-  /* WELCOME PAGE */
-  function showWelcomePage() { document.getElementById('welcomePage').style.display = 'flex'; document.getElementById('loginModal').style.display = 'none'; document.getElementById('registrationModal').style.display = 'none'; }
-  function showLoginPage() { document.getElementById('welcomePage').style.display = 'none'; document.getElementById('loginModal').style.display = 'flex'; }
-  function showRegistrationPage() { document.getElementById('welcomePage').style.display = 'none'; document.getElementById('registrationModal').style.display = 'flex'; document.getElementById('regStep1').style.display = 'block'; document.getElementById('regStep2').style.display = 'none'; }
-  function closeRegistrationModal() { document.getElementById('registrationModal').style.display = 'none'; showWelcomePage(); }
-  function updateWelcomeTrialDuration() { var d = platformSettings.trialDuration || 14; var el = document.getElementById('welcomeTrialDuration'); if (el) el.innerText = d + '-Day Free Trial'; }
-
-  /* REGISTRATION */
-  function proceedToRegStep2() {
-    var bn = document.getElementById('regBusinessName').value.trim();
-    var an = document.getElementById('regAdminName').value.trim();
-    var em = document.getElementById('regAdminEmail').value.trim();
-    var mo = document.getElementById('regAdminMobile').value.trim();
-    var pw = document.getElementById('regPassword').value;
-    var cpw = document.getElementById('regConfirmPassword').value;
-    if (!bn || !an || !em || !mo || !pw) return alert('Please fill all required fields.');
-    if (pw !== cpw) return alert('Passwords do not match.');
-    if (pw.length < 6) return alert('Password must be at least 6 characters.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return alert('Please enter a valid email address.');
-    document.getElementById('regBusinessNameConfirm').value = bn;
-    document.getElementById('regStep1').style.display = 'none';
-    document.getElementById('regStep2').style.display = 'block';
-  }
-  function backToRegStep1() { document.getElementById('regStep1').style.display = 'block'; document.getElementById('regStep2').style.display = 'none'; }
-  function toggleOtherCategory() { var sel = document.getElementById('regCategory').value; document.getElementById('regOtherCategory').style.display = sel === 'Other' ? 'block' : 'none'; }
-  function previewRegLogo(event) {
-    var file = event.target.files[0]; if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function(e) { regLogoDataUrl = e.target.result; var box = document.getElementById('regLogoPreview'); box.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:contain;border-radius:var(--radius-md);">'; };
-    reader.readAsDataURL(file);
-  }
-  function completeRegistration() {
-    var bn = document.getElementById('regBusinessName').value.trim();
-    var an = document.getElementById('regAdminName').value.trim();
-    var em = document.getElementById('regAdminEmail').value.trim();
-    var mo = document.getElementById('regAdminMobile').value.trim();
-    var pw = document.getElementById('regPassword').value;
-    var motto = document.getElementById('regMotto').value.trim();
-    var cat = document.getElementById('regCategory').value;
-    if (cat === 'Other') cat = document.getElementById('regOtherCategory').value.trim();
-    if (!cat) return alert('Please select a business category.');
-
-    var bizCount = Object.keys(businessesRegistry).length;
-    if (bizCount >= (platformSettings.maxBusinesses || 25)) return alert('Maximum number of registered businesses reached (' + platformSettings.maxBusinesses + '). Please contact the platform administrator.');
-
-    var btn = document.getElementById('regSubmitBtn');
-    btn.disabled = true; btn.innerText = 'Registering...';
-
-    // Step 1: Create Firebase Auth account
-    firebase.auth().createUserWithEmailAndPassword(em, pw).then(function(userCred) {
-      var uid = userCred.user.uid;
-      var businessId = 'BIZ-' + Date.now().toString(36).toUpperCase();
-      var todayStr = getISTDateStr();
-      var trialEnd = new Date(todayStr);
-      trialEnd.setDate(trialEnd.getDate() + (platformSettings.trialDuration || 14));
-      var trialEndStr = trialEnd.toISOString().substring(0, 10);
-
-      var businessRecord = {
-        profile: { name: bn, adminName: an, adminEmail: em, adminMobile: mo, category: cat, logo: regLogoDataUrl || '', motto: motto || '', registrationDate: todayStr, lastLogin: '' },
-        subscription: { status: 'Free Trial', trialStart: todayStr, trialDuration: platformSettings.trialDuration || 14, trialEnd: trialEndStr, subStart: '', subEnd: '', plan: '', paymentProof: '', paymentStatus: '' },
-        data: {
-          userAccounts: [{ id: 'ADM-001', name: an, role: 'Admin', password: simpleHash(pw), mobile: mo, email: em }],
-          masterServices: [...DEFAULT_SERVICES], serviceLog: [], expenseLog: [], transferLog: [], invoices: [], attendance: {}, closedMonths: {},
-          openingBalances: {}, monthlySalaries: {}, staffDailyEditCount: {}, staffMilestoneAchieved: {}, staffProfiles: {},
-          adminTransfers: [], historicalMonths: {}, logoDataUrl: regLogoDataUrl || ''
-        }
-      };
-
-      // Step 2: Write userMap entry (own uid — allowed by rules)
-      var userMapRef = firebase.database().ref(PLATFORM_NODE + '/userMap/' + uid);
-      userMapRef.set({ businessId: businessId, role: 'Admin', isPlatformAdmin: false, email: em, name: an }).then(function() {
-        // Step 3: Create business record
-        var bizRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + businessId);
-        return bizRef.set(businessRecord);
-      }).then(function() {
-        // Step 4: Write userIndex for platform admin lookups
-        var userIndexRef = firebase.database().ref(PLATFORM_NODE + '/userIndex/' + simpleHash(em));
-        return userIndexRef.set({ businessId: businessId, role: 'Admin', email: em, name: an });
-      }).then(function() {
-        businessesRegistry[businessId] = businessRecord;
-        btn.disabled = false; btn.innerText = 'Complete Registration';
-        alert('Business registered successfully! Your Business ID is: ' + businessId);
-        closeRegistrationModal();
-        // Auto-login
-        loginToBusiness(businessId, { id: 'ADM-001', name: an, role: 'Admin', email: em, mobile: mo }, businessRecord);
-      }).catch(function(err) {
-        btn.disabled = false; btn.innerText = 'Complete Registration';
-        alert('Registration error: ' + err.message);
-      });
-    }).catch(function(error) {
-      btn.disabled = false; btn.innerText = 'Complete Registration';
-      if (error.code === 'auth/email-already-in-use') alert('This email is already registered. Please login instead.');
-      else alert('Registration failed: ' + error.message);
-    });
-  }
-
-  /* MULTI-TENANT LOGIN */
-  function performMultiTenantLogin() {
-    var userInput = document.getElementById('mtLoginEmail').value.trim();
-    var pass = document.getElementById('mtLoginPassword').value;
-    if (!userInput || !pass) return alert('Please enter username/email and password.');
-
-    var btn = document.querySelector('#mtAdminLoginForm .btn-primary');
-    if (btn) { btn.disabled = true; btn.innerText = 'Signing in...'; }
-
-    // USERNAME LOGIN (first-time setup) — verify against existing credentials
-    if (userInput.indexOf('@') === -1) {
-      performUsernameLogin(userInput, pass, btn);
-      return;
-    }
-
-    // EMAIL LOGIN — Firebase Auth
-    var email = userInput.toLowerCase();
-    firebase.auth().signInWithEmailAndPassword(email, pass).then(function(userCred) {
-      var uid = userCred.user.uid;
-      var userMapRef = firebase.database().ref(PLATFORM_NODE + '/userMap/' + uid);
-      userMapRef.once('value').then(function(snap) {
-        if (btn) { btn.disabled = false; btn.innerText = 'Sign In'; }
-        var userInfo = snap.val();
-        if (!userInfo) {
-          // Check if this is the platform admin (first login — create userMap entry)
-          if (email === (platformSettings.superAdminEmail || 'admin@fintrack.platform')) {
-            userMapRef.set({ isPlatformAdmin: true, role: 'SuperAdmin', businessId: platformSettings.defaultBusinessId || 'BIZ-DEFAULT', email: email, name: 'Platform Admin' }).then(function() {
-              currentRole = 'SuperAdmin'; isPlatformAdmin = true;
-              currentBusinessId = platformSettings.defaultBusinessId || 'BIZ-DEFAULT';
-              currentUser = { name: 'Platform Admin', role: 'SuperAdmin', email: email };
-              document.getElementById('loginModal').style.display = 'none';
-              document.getElementById('welcomePage').style.display = 'none';
-              showPlatformAdminUI(); loadPlatformData();
-            }).catch(function(error) {
-              if (btn) { btn.disabled = false; btn.innerText = 'Sign In'; }
-              firebase.auth().signOut();
-              alert('Login failed: Could not create admin profile. ' + error.message);
-            });
-            return;
-          }
-          firebase.auth().signOut();
-          alert('No business account found for this email. Please register first.');
-          return;
-        }
-        if (userInfo.isPlatformAdmin) {
-          currentRole = 'SuperAdmin'; isPlatformAdmin = true;
-          currentBusinessId = userInfo.businessId || platformSettings.defaultBusinessId || 'BIZ-DEFAULT';
-          currentUser = { name: 'Platform Admin', role: 'SuperAdmin', email: email };
-          document.getElementById('loginModal').style.display = 'none';
-          document.getElementById('welcomePage').style.display = 'none';
-          showPlatformAdminUI(); loadPlatformData();
-          return;
-        }
-        // Business user — load business
-        var bid = userInfo.businessId;
-        var bizRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid);
-        bizRef.once('value').then(function(bizSnap) {
-          var biz = bizSnap.val();
-          if (!biz) { firebase.auth().signOut(); alert('Business data not found.'); return; }
-          if (biz.subscription && biz.subscription.status === 'Blocked') { firebase.auth().signOut(); alert('Your business account has been blocked.'); return; }
-          var user = biz.data.userAccounts.find(function(u) { return u.email && u.email.toLowerCase() === email; });
-          if (!user) user = { name: userInfo.name, role: userInfo.role, email: email };
-          loginToBusiness(bid, user, biz);
-        });
-      }).catch(function(error) {
-        if (btn) { btn.disabled = false; btn.innerText = 'Sign In'; }
-        firebase.auth().signOut();
-        alert('Login failed: Could not verify account. ' + error.message);
-      });
-    }).catch(function(error) {
-      if (btn) { btn.disabled = false; btn.innerText = 'Sign In'; }
-      var msg = 'Login failed. ';
-      if (error.code === 'auth/invalid-email') msg += 'Invalid email format.';
-      else if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') msg += 'Invalid email or password.';
-      else msg += error.message;
-      alert(msg);
-    });
-  }
-
-
-  /* FIRST-TIME ADMIN SETUP: Username login → verify → setup modal → create Firebase Auth */
-  var pendingSetupUser = null;
-  var pendingSetupUsername = '';
-
-  function performUsernameLogin(username, pass, btn) {
-    // Verify against appData.users (pre-loaded with DEFAULT_USERS on page load)
-    var user = appData.users.find(function(u) {
-      return u.name === username && u.pass === pass && (u.role === 'Admin' || u.role === 'admin');
-    });
-
-    if (!user) {
-      if (btn) { btn.disabled = false; btn.innerText = 'Sign In'; }
-      alert('Invalid admin credentials. Please check your username and password.\n\nIf you have already set up your email login, please use your email address instead of username.');
-      return;
-    }
-
-    if (btn) { btn.disabled = false; btn.innerText = 'Sign In'; }
-    // Show the setup modal
-    pendingSetupUser = user;
-    pendingSetupUsername = username;
-    document.getElementById('adminSetupEmail').value = '';
-    document.getElementById('adminSetupPass').value = '';
-    document.getElementById('adminSetupConfirmPass').value = '';
-    document.getElementById('adminSetupModal').style.display = 'flex';
-  }
-
-  function completeAdminSetup() {
-    var email = document.getElementById('adminSetupEmail').value.trim().toLowerCase();
-    var pass = document.getElementById('adminSetupPass').value;
-    var confirmPass = document.getElementById('adminSetupConfirmPass').value;
-
-    if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-      return alert('Please enter a valid email address.');
-    }
-    if (!pass || pass.length < 6) {
-      return alert('Password must be at least 6 characters.');
-    }
-    if (pass !== confirmPass) {
-      return alert('Passwords do not match.');
-    }
-
-    var btn = document.querySelector('#adminSetupModal .btn-primary');
-    if (btn) { btn.disabled = true; btn.innerText = 'Setting up...'; }
-
-    window._adminSetupInProgress = true;
-    var bid = platformSettings.defaultBusinessId || 'BIZ-DEFAULT';
-    var setupUser = pendingSetupUser;
-    setupUser.email = email;
-
-    // Step 1: Create Firebase Auth account (or sign in if email already exists)
-    var authPromise = firebase.auth().createUserWithEmailAndPassword(email, pass).then(function(userCred) {
-      return userCred.user.uid;
-    }).catch(function(error) {
-      if (error.code === 'auth/email-already-in-use') {
-        // Email already registered — sign in with the provided password
-        return firebase.auth().signInWithEmailAndPassword(email, pass).then(function(userCred) {
-          return userCred.user.uid;
-        });
-      }
-      throw error;
-    });
-
-    // Step 2: Link UID to business in userMap
-    authPromise.then(function(uid) {
-      var userMapRef = firebase.database().ref(PLATFORM_NODE + '/userMap/' + uid);
-      return userMapRef.set({
-        businessId: bid,
-        role: 'Admin',
-        email: email,
-        name: pendingSetupUsername,
-        mobile: setupUser.mobile || ''
-      });
-    }).then(function() {
-      // Account linked — close modal immediately (instant response)
-      window._adminSetupInProgress = false;
-      document.getElementById('adminSetupModal').style.display = 'none';
-      if (btn) { btn.disabled = false; btn.innerText = 'Complete Setup'; }
-
-      // Login to business (loads data and shows admin UI)
-      var bizRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid);
-      bizRef.once('value').then(function(bizSnap) {
-        loginToBusiness(bid, setupUser, bizSnap.val());
-      }).catch(function() {
-        loginToBusiness(bid, setupUser, null);
-      });
-
-      alert('Setup complete! From now on, login with your email: ' + email);
-    }).catch(function(error) {
-      window._adminSetupInProgress = false;
-      if (btn) { btn.disabled = false; btn.innerText = 'Complete Setup'; }
-      var msg = 'Setup failed: ';
-      if (error.code === 'auth/email-already-in-use') {
-        msg = 'This email is already registered with a different password. Please use the correct password or try a different email.';
-      } else if (error.code === 'auth/invalid-email') {
-        msg += 'Invalid email format.';
-      } else if (error.code === 'auth/weak-password') {
-        msg += 'Password is too weak. Use at least 6 characters.';
-      } else if (error.code === 'auth/network-request-failed') {
-        msg += 'Network error. Check your internet connection.';
-      } else {
-        msg += error.message;
-      }
-      alert(msg);
-    });
-
-    // Timeout fallback — if setup stalls, reset button after 15 seconds
-    setTimeout(function() {
-      if (window._adminSetupInProgress) {
-        window._adminSetupInProgress = false;
-        if (btn) { btn.disabled = false; btn.innerText = 'Complete Setup'; }
-        alert('Setup is taking longer than expected. Please check your internet connection and try again.');
-      }
-    }, 15000);
-  }
-
-  function loginToBusiness(bid, user, bizData) {
-    currentBusinessId = bid;
-    currentRole = user.role;
-    isPlatformAdmin = false;
-    currentUser = user;
-    currentUser.email = user.email || '';
-    currentUser.mobile = user.mobile || '';
-
-    // Load business data
-    if (bizData) {
-      appData = convertLegacyData(bizData.data);
-      businessesRegistry[bid] = bizData;
-    } else if (businessesRegistry[bid]) {
-      appData = convertLegacyData(businessesRegistry[bid].data);
-    }
-
-    // Update last login
-    var todayStr = getISTDateTimeStr();
-    var profileRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid + '/profile/lastLogin');
-    profileRef.set(todayStr).catch(function() {});
-
-    // Setup Firebase sync for this business
-    setupBusinessFirebaseSync(bid);
-
-    // Check subscription
-    var subInfo = getSubscriptionInfo();
-    if (subInfo.status === 'Subscription Expired') {
-      document.getElementById('loginModal').style.display = 'none';
-      showExpiredSubscriptionMessage();
-      return;
-    }
-    if (subInfo.status === 'Blocked') { alert('Your business account has been blocked.'); return; }
-
-    // Save to localStorage
-    localStorage.setItem('FT_CURRENT_BID', bid);
-    localStorage.setItem('FT_CURRENT_ROLE', user.role);
-    localStorage.setItem('FT_CURRENT_EMAIL', user.email || '');
-
-    // Update UI
-    document.getElementById('loginModal').style.display = 'none';
-    document.getElementById('welcomePage').style.display = 'none';
-    document.getElementById('activeUserBadge').innerText = user.name + ' (' + user.role + ')';
-    var bidBadge = document.getElementById('adminBusinessIdBadge');
-    if (bidBadge) bidBadge.innerText = 'Business ID: ' + bid;
-
-    if (user.role === 'Admin') {
-      document.getElementById('btn-adminTab').style.display = 'inline-block';
-      document.getElementById('drawer-adminTab').style.display = 'flex';
-      document.getElementById('adminHrStaffSelectorCard').style.display = 'block';
-      document.getElementById('adminPhotoUploadArea').style.display = 'block';
-      document.getElementById('adminEditProfileBtnContainer').style.display = 'block';
-    } else {
-      document.getElementById('btn-adminTab').style.display = 'none';
-      document.getElementById('drawer-adminTab').style.display = 'none';
-      document.getElementById('adminHrStaffSelectorCard').style.display = 'none';
-      document.getElementById('adminPhotoUploadArea').style.display = 'none';
-      document.getElementById('adminEditProfileBtnContainer').style.display = 'none';
-    }
-
-    logAttendance(user);
-    populateServiceDropdown();
-    refreshAllViews();
-    loadUserTheme();
-    showSubscriptionStatusBanner();
-    var upgradeBtn = document.getElementById('upgradeBtn');
-    if (upgradeBtn) upgradeBtn.style.display = (user.role === 'Admin' && !isPlatformAdmin) ? 'inline-flex' : 'none';
-  }
-
-  function performStaffMultiTenantLogin() {
-    var bid = document.getElementById('staffLoginBid').value.trim();
-    var name = document.getElementById('staffLoginUser').value.trim();
-    var pass = document.getElementById('staffLoginPass').value;
-    if (!bid || !name || !pass) return alert('Please fill all fields.');
-
-    var btn = document.querySelector('#mtStaffLoginForm .btn-primary');
-    if (btn) { btn.disabled = true; btn.innerText = 'Signing in...'; }
-
-    // Construct staff email for Firebase Auth
-    var sanitizedUser = name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-    var staffEmail = sanitizedUser + '@' + bid + '.fintrack';
-
-    firebase.auth().signInWithEmailAndPassword(staffEmail, pass).then(function(userCred) {
-      var uid = userCred.user.uid;
-      var userMapRef = firebase.database().ref(PLATFORM_NODE + '/userMap/' + uid);
-      userMapRef.once('value').then(function(snap) {
-        if (btn) { btn.disabled = false; btn.innerText = 'Sign In'; }
-        var userInfo = snap.val();
-        if (!userInfo || userInfo.businessId !== bid) {
-          firebase.auth().signOut();
-          alert('Invalid staff credentials or business ID.');
-          return;
-        }
-        var bizRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid);
-        bizRef.once('value').then(function(bizSnap) {
-          var biz = bizSnap.val();
-          if (!biz) { firebase.auth().signOut(); alert('Business data not found.'); return; }
-          if (biz.subscription && biz.subscription.status === 'Blocked') { firebase.auth().signOut(); alert('Your business account has been blocked.'); return; }
-          var staff = biz.data.userAccounts.find(function(u) { return u.name === name && u.role === 'Staff'; });
-          if (!staff) staff = { name: name, role: 'Staff', pass: pass };
-          loginToBusiness(bid, staff, biz);
-        });
-      });
-    }).catch(function(error) {
-      if (btn) { btn.disabled = false; btn.innerText = 'Sign In'; }
-      alert('Login failed: Invalid staff credentials. Please check your Business ID, username, and password.');
-    });
-  }
-
-  function showPlatformAdminUI() {
-    var upgradeBtn = document.getElementById('upgradeBtn'); if (upgradeBtn) upgradeBtn.style.display = 'none';
-    document.getElementById('activeUserBadge').innerText = 'Platform Admin (SuperAdmin)';
-    var bidBadge = document.getElementById('adminBusinessIdBadge');
-    if (bidBadge) bidBadge.innerText = 'Business ID: ' + currentBusinessId;
-    document.getElementById('btn-adminTab').style.display = 'inline-block';
-    document.getElementById('drawer-adminTab').style.display = 'flex';
-    document.getElementById('btn-appSettingsTab').style.display = 'inline-block';
-    document.getElementById('drawer-appSettingsTab').style.display = 'flex';
-    document.getElementById('adminHrStaffSelectorCard').style.display = 'block';
-    document.getElementById('adminPhotoUploadArea').style.display = 'block';
-    document.getElementById('adminEditProfileBtnContainer').style.display = 'block';
-    currentBusinessId = platformSettings.defaultBusinessId || 'BIZ-DEFAULT';
-    setupBusinessFirebaseSync(currentBusinessId);
-    refreshAllViews();
-    loadUserTheme();
-  }
-
-  function loadPlatformData() {
-    // Load platform settings
-    var psRef = firebase.database().ref(PLATFORM_NODE + '/platformSettings');
-    psRef.once('value').then(function(snap) {
-      var ps = snap.val();
-      if (ps) { platformSettings = { ...platformSettings, ...ps }; }
-      else {
-        // Initialize default platform settings
-        psRef.set(platformSettings);
-      }
-      updatePlatformSettingsUI();
-      updateWelcomeTrialDuration();
-    });
-
-    // Run migration (creates BIZ-DEFAULT if needed)
-    migrateToMultiTenant();
-
-    // Load all businesses
-    var bizRef = firebase.database().ref(PLATFORM_NODE + '/businesses');
-    bizRef.on('value', function(snap) {
-      businessesRegistry = snap.val() || {};
-      renderRegisteredBusinesses();
-    });
-
-    // Also load default business data for platform admin
-    var defaultBid = platformSettings.defaultBusinessId || 'BIZ-DEFAULT';
-    var defaultBizRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + defaultBid + '/data');
-    defaultBizRef.once('value').then(function(snap) {
-      var data = snap.val();
-      if (data) { appData = convertLegacyData(data); refreshAllViews(); }
-    }).catch(function() {});
-  }
-
-  function updatePlatformSettingsUI() {
-    document.getElementById('maxBusinessesInput').value = platformSettings.maxBusinesses || 25;
-    document.getElementById('trialDurationInput').value = platformSettings.trialDuration || 14;
-    document.getElementById('adminWhatsAppInput').value = platformSettings.adminWhatsApp || '';
-    document.getElementById('upiIdInput').value = platformSettings.upiId || '';
-    document.getElementById('platformNameInput').value = (platformSettings.branding && platformSettings.branding.name) || '';
-    document.getElementById('platformMottoInput').value = (platformSettings.branding && platformSettings.branding.motto) || '';
-    if (platformSettings.branding && platformSettings.branding.logo) {
-      platformLogoDataUrl = platformSettings.branding.logo;
-      document.getElementById('platformLogoPreview').innerHTML = '<img src="' + platformLogoDataUrl + '" style="width:100%;height:100%;object-fit:contain;border-radius:var(--radius-md);">';
-    }
-  }
-
-  function setupBusinessFirebaseSync(bid) {
-    if (!firebase || !firebase.database) return;
-    try {
-      if (businessDbRef) { businessDbRef.off(); }
-      businessDbRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid + '/data');
-      isFirebaseSyncActive = true;
-      businessDbRef.on('value', function(snap) {
-        var val = snap.val();
-        if (val) {
-          appData = convertLegacyData(val);
-          dedupeEntryIds();
-          localStorage.setItem('ATMOS_HUB_DATA_2026', JSON.stringify(appData));
-          refreshAllViews();
-        }
-      });
-    } catch (e) { console.error('Business sync failed:', e); }
-  }
-
-  function saveBusinessData() {
-    if (!currentBusinessId) { saveData(); return; }
-    localStorage.setItem('ATMOS_HUB_DATA_2026', JSON.stringify(appData));
-    if (isFirebaseSyncActive && businessDbRef) {
-      businessDbRef.set(convertToLegacyFormat()).catch(function(err) { console.error('Business sync write error:', err); });
-    }
-  }
-
-  /* PLATFORM ADMIN FUNCTIONS */
-  function savePlatformSettings() {
-    platformSettings.maxBusinesses = parseInt(document.getElementById('maxBusinessesInput').value) || 25;
-    platformSettings.trialDuration = parseInt(document.getElementById('trialDurationInput').value) || 14;
-    platformSettings.adminWhatsApp = document.getElementById('adminWhatsAppInput').value.trim();
-    platformSettings.upiId = document.getElementById('upiIdInput').value.trim();
-    var psRef = firebase.database().ref(PLATFORM_NODE + '/platformSettings');
-    psRef.update(platformSettings).then(function() {
-      alert('Platform settings saved successfully!');
-      updateWelcomeTrialDuration();
-    }).catch(function() { alert('Saved locally (Firebase sync unavailable).'); });
-  }
-
-  function previewPlatformLogo(event) {
-    var file = event.target.files[0]; if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function(e) { platformLogoDataUrl = e.target.result; document.getElementById('platformLogoPreview').innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:contain;border-radius:var(--radius-md);">'; };
-    reader.readAsDataURL(file);
-  }
-
-  function savePlatformBranding() {
-    if (!platformSettings.branding) platformSettings.branding = {};
-    platformSettings.branding.name = document.getElementById('platformNameInput').value.trim();
-    platformSettings.branding.motto = document.getElementById('platformMottoInput').value.trim();
-    platformSettings.branding.logo = platformLogoDataUrl || (platformSettings.branding.logo || '');
-    var psRef = firebase.database().ref(PLATFORM_NODE + '/platformSettings/branding');
-    psRef.set(platformSettings.branding).then(function() { alert('Platform branding saved successfully!'); }).catch(function() { alert('Saved locally.'); });
-  }
-
-  function renderRegisteredBusinesses() {
-    var tbody = document.getElementById('registeredBusinessesTableBody');
-    if (!tbody) return;
-    tbody.innerHTML = '';
-    var today = new Date(getISTDateStr());
-    Object.keys(businessesRegistry).forEach(function(bid) {
-      var biz = businessesRegistry[bid];
-      var p = biz.profile || {};
-      var s = biz.subscription || {};
-      var daysLeft = '';
-      var isActive = 'Dormant';
-      if (p.lastLogin) {
-        var lastLoginDate = new Date(p.lastLogin.substring(0, 10));
-        var diffDays = Math.floor((today - lastLoginDate) / 86400000);
-        isActive = diffDays <= 14 ? 'Active' : 'Dormant';
-      } else if (p.registrationDate) {
-        var regDate = new Date(p.registrationDate);
-        var regDiff = Math.floor((today - regDate) / 86400000);
-        isActive = regDiff <= 14 ? 'Active' : 'Dormant';
-      }
-      if (s.subEnd) { var subEndDate = new Date(s.subEnd); daysLeft = Math.max(0, Math.floor((subEndDate - today) / 86400000)); }
-      var statusBadge = s.status === 'Blocked' ? '<span style="color:#e11d48;font-weight:700;">Blocked</span>' : s.status === 'Subscription Active' ? '<span style="color:#059669;font-weight:700;">Active</span>' : s.status === 'Subscription Expired' ? '<span style="color:#e11d48;font-weight:700;">Expired</span>' : '<span style="color:#d97706;font-weight:700;">' + s.status + '</span>';
-      var bizStatus = s.status === 'Blocked' ? 'Blocked' : isActive;
-      tbody.innerHTML += '<tr style="border-bottom:1px solid var(--border);">' +
-        '<td style="padding:8px;font-size:0.72rem;font-weight:700;">' + bid + '</td>' +
-        '<td style="padding:8px;font-weight:700;">' + (p.name || '') + '</td>' +
-        '<td style="padding:8px;">' + (p.adminName || '') + '</td>' +
-        '<td style="padding:8px;font-size:0.75rem;">' + (p.category || '') + '</td>' +
-        '<td style="padding:8px;font-size:0.75rem;">' + (p.registrationDate || '') + '</td>' +
-        '<td style="padding:8px;font-size:0.72rem;">' + (p.lastLogin || 'Never') + '</td>' +
-        '<td style="padding:8px;">' + (bizStatus === 'Active' ? '<span style="color:#059669;font-weight:700;">Active</span>' : '<span style="color:#64748b;font-weight:700;">Dormant</span>') + '</td>' +
-        '<td style="padding:8px;">' + statusBadge + '</td>' +
-        '<td style="padding:8px;font-size:0.75rem;">' + (s.subEnd || '-') + '</td>' +
-        '<td style="padding:8px;font-weight:700;">' + (daysLeft !== '' ? daysLeft + 'd' : '-') + '</td>' +
-        '<td style="padding:8px;text-align:center;white-space:nowrap;">' +
-          '<button class="btn-sm btn-primary" onclick="manageBusinessSubscription(\'' + bid + '\')" style="font-size:0.7rem;padding:3px 8px;margin:1px;">Manage</button> ' +
-          '<button class="btn-sm" onclick="activateSubFromAdmin(\'' + bid + '\',\'1month\')" style="font-size:0.7rem;padding:3px 8px;margin:1px;background:var(--accent-green);color:white;">+1M</button> ' +
-          '<button class="btn-sm" onclick="blockBusiness(\'' + bid + '\')" style="font-size:0.7rem;padding:3px 8px;margin:1px;background:var(--accent-amber);color:white;">Block</button> ' +
-          '<button class="btn-sm" onclick="deleteBusiness(\'' + bid + '\')" style="font-size:0.7rem;padding:3px 8px;margin:1px;background:var(--accent-rose);color:white;">Delete</button>' +
-        '</td></tr>';
-    });
-    if (Object.keys(businessesRegistry).length === 0) tbody.innerHTML = '<tr><td colspan="11" style="padding:16px;text-align:center;color:var(--text-muted);">No businesses registered yet.</td></tr>';
-  }
-
-  function manageBusinessSubscription(bid) {
-    var biz = businessesRegistry[bid]; if (!biz) return;
-    var s = biz.subscription || {};
-    var html = '<div style="font-size:0.85rem;"><h4 style="font-weight:900;color:var(--atmos-navy);margin-bottom:10px;">' + (biz.profile.name || bid) + '</h4>';
-    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">';
-    html += '<div><strong>Status:</strong> ' + s.status + '</div>';
-    html += '<div><strong>Plan:</strong> ' + (s.plan || '-') + '</div>';
-    html += '<div><strong>Trial Start:</strong> ' + (s.trialStart || '-') + '</div>';
-    html += '<div><strong>Trial End:</strong> ' + (s.trialEnd || '-') + '</div>';
-    html += '<div><strong>Sub Start:</strong> ' + (s.subStart || '-') + '</div>';
-    html += '<div><strong>Sub End:</strong> ' + (s.subEnd || '-') + '</div>';
-    html += '</div>';
-    html += '<div style="font-weight:700;margin-bottom:10px;">Activate / Extend Subscription:</div>';
-    html += '<div style="display:flex;gap:6px;flex-wrap:wrap;">';
-    html += '<button class="btn-primary" onclick="activateSubFromAdmin(\''+bid+'\',\'1month\')" style="font-size:0.75rem;padding:6px 12px;">1 Month (₹111)</button>';
-    html += '<button class="btn-primary" onclick="activateSubFromAdmin(\''+bid+'\',\'3months\')" style="font-size:0.75rem;padding:6px 12px;">3 Months (₹333)</button>';
-    html += '<button class="btn-primary" onclick="activateSubFromAdmin(\''+bid+'\',\'6months\')" style="font-size:0.75rem;padding:6px 12px;">6 Months (₹666)</button>';
-    html += '<button class="btn-primary" onclick="activateSubFromAdmin(\''+bid+'\',\'1year\')" style="font-size:0.75rem;padding:6px 12px;">1 Year (₹111,141)</button>';
-    html += '</div>';
-    html += '<div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap;">';
-    if (s.status !== 'Blocked') html += '<button onclick="blockBusiness(\''+bid+'\')" style="font-size:0.75rem;padding:6px 12px;background:var(--accent-amber);color:white;border:none;border-radius:var(--radius-md);cursor:pointer;">Block Business</button>';
-    else html += '<button onclick="unblockBusiness(\''+bid+'\')" style="font-size:0.75rem;padding:6px 12px;background:var(--accent-green);color:white;border:none;border-radius:var(--radius-md);cursor:pointer;">Unblock Business</button>';
-    html += '<button onclick="markSubExpired(\''+bid+'\')" style="font-size:0.75rem;padding:6px 12px;background:var(--accent-rose);color:white;border:none;border-radius:var(--radius-md);cursor:pointer;">Mark Expired</button>';
-    html += '<button onclick="setFreePlan(\''+bid+'\')" style="font-size:0.75rem;padding:6px 12px;background:var(--primary);color:white;border:none;border-radius:var(--radius-md);cursor:pointer;">Set Free Plan</button>';
-    html += '</div></div>';
-    document.getElementById('subMgmtArea').innerHTML = html;
-  }
-
-  function activateSubFromAdmin(bid, plan) {
-    var biz = businessesRegistry[bid]; if (!biz) return;
-    var durations = { '1month': 30, '3months': 90, '6months': 180, '1year': 365 };
-    var planNames = { '1month': '1 Month', '3months': '3 Months', '6months': '6 Months', '1year': '1 Year' };
-    var days = durations[plan]; if (!days) return;
-    var today = new Date(getISTDateStr());
-    var startDate = today;
-    // If existing sub is still active, extend from current end date
-    if (biz.subscription && biz.subscription.subEnd && biz.subscription.status === 'Subscription Active') {
-      var existingEnd = new Date(biz.subscription.subEnd);
-      if (existingEnd > today) startDate = existingEnd;
-    }
-    var endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + days);
-    var subStart = startDate.toISOString().substring(0, 10);
-    var subEnd = endDate.toISOString().substring(0, 10);
-    var updates = { 'subscription/status': 'Subscription Active', 'subscription/subStart': subStart, 'subscription/subEnd': subEnd, 'subscription/plan': planNames[plan], 'subscription/paymentStatus': 'verified' };
-    firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid).update(updates).then(function() {
-      alert('Subscription activated for ' + planNames[plan] + '.\nStart: ' + subStart + '\nEnd: ' + subEnd);
-      if (businessesRegistry[bid].subscription) { Object.keys(updates).forEach(function(k) { var parts = k.split('/'); var obj = businessesRegistry[bid]; for (var i = 0; i < parts.length - 1; i++) { if (!obj[parts[i]]) obj[parts[i]] = {}; obj = obj[parts[i]]; } obj[parts[parts.length - 1]] = updates[k]; }); }
-      renderRegisteredBusinesses();
-      manageBusinessSubscription(bid);
-    }).catch(function() { alert('Failed to activate. Please try again.'); });
-  }
-
-  function blockBusiness(bid) {
-    if (!confirm('Block this business? All users will be prevented from accessing the application.')) return;
-    firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid + '/subscription/status').set('Blocked').then(function() {
-      if (businessesRegistry[bid] && businessesRegistry[bid].subscription) businessesRegistry[bid].subscription.status = 'Blocked';
-      renderRegisteredBusinesses(); alert('Business blocked successfully.');
-    });
-  }
-  function unblockBusiness(bid) {
-    firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid + '/subscription/status').set('Free Trial').then(function() {
-      if (businessesRegistry[bid] && businessesRegistry[bid].subscription) businessesRegistry[bid].subscription.status = 'Free Trial';
-      renderRegisteredBusinesses(); alert('Business unblocked successfully.');
-    });
-  }
-  function markSubExpired(bid) {
-    firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid + '/subscription/status').set('Subscription Expired').then(function() {
-      if (businessesRegistry[bid] && businessesRegistry[bid].subscription) businessesRegistry[bid].subscription.status = 'Subscription Expired';
-      renderRegisteredBusinesses(); alert('Subscription marked as expired.');
-    });
-  }
-  function setFreePlan(bid) {
-    firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid + '/subscription/status').set('Free Plan').then(function() {
-      if (businessesRegistry[bid] && businessesRegistry[bid].subscription) businessesRegistry[bid].subscription.status = 'Free Plan';
-      renderRegisteredBusinesses(); alert('Set to Free Plan.');
-    });
-  }
-  function deleteBusiness(bid) {
-    if (!confirm('PERMANENT DELETE WARNING\n\nThe selected business will be permanently deleted.\nAll associated business data will be deleted.\nThis action CANNOT be undone.\n\nAre you absolutely sure?')) return;
-    if (!confirm('Final confirmation: Delete business ' + bid + ' and ALL its data?')) return;
-    firebase.database().ref(PLATFORM_NODE + '/businesses/' + bid).remove().then(function() {
-      delete businessesRegistry[bid];
-      renderRegisteredBusinesses();
-      document.getElementById('subMgmtArea').innerHTML = 'Select a business from the table above to manage its subscription.';
-      alert('Business deleted permanently.');
-    }).catch(function() { alert('Delete failed. Please try again.'); });
-  }
-
-  /* SUBSCRIPTION SYSTEM */
-  function getSubscriptionInfo() {
-    if (isPlatformAdmin) return { status: 'Active', daysRemaining: 999 };
-    if (!currentBusinessId) return { status: 'Free Trial', daysRemaining: 14 };
-    var biz = businessesRegistry[currentBusinessId];
-    if (!biz || !biz.subscription) return { status: 'Free Trial', daysRemaining: 14 };
-    var s = biz.subscription;
-    if (s.status === 'Blocked') return { status: 'Blocked', daysRemaining: 0 };
-    if (s.status === 'Subscription Active' && s.subEnd) {
-      var today = new Date(getISTDateStr());
-      var end = new Date(s.subEnd);
-      var days = Math.floor((end - today) / 86400000);
-      if (days < 0) return { status: 'Subscription Expired', daysRemaining: 0 };
-      return { status: 'Subscription Active', daysRemaining: days };
-    }
-    if (s.status === 'Free Trial' && s.trialEnd) {
-      var today = new Date(getISTDateStr());
-      var end = new Date(s.trialEnd);
-      var days = Math.floor((end - today) / 86400000);
-      if (days < 0) return { status: 'Subscription Expired', daysRemaining: 0 };
-      return { status: 'Free Trial', daysRemaining: days };
-    }
-    if (s.status === 'Free Plan') return { status: 'Free Plan', daysRemaining: 999 };
-    if (s.status === 'Subscription Expired') return { status: 'Subscription Expired', daysRemaining: 0 };
-    return { status: s.status || 'Free Trial', daysRemaining: 14 };
-  }
-
-  function showSubscriptionStatusBanner() {
-    if (isPlatformAdmin) return;
-    var info = getSubscriptionInfo();
-    var banner = document.getElementById('subscriptionBanner');
-    if (!banner) return;
-    if (info.status === 'Subscription Active' || info.status === 'Free Trial' || info.status === 'Free Plan') {
-      banner.style.display = 'flex';
-      banner.className = info.status === 'Free Trial' ? 'sub-banner sub-trial' : info.status === 'Free Plan' ? 'sub-banner sub-free' : 'sub-banner sub-active';
-      banner.innerHTML = '<i class="fa-solid fa-circle-check"></i> ' + info.status + (info.daysRemaining < 999 ? ' — ' + info.daysRemaining + ' Days Remaining' : '');
-    } else if (info.status === 'Subscription Expired') {
-      banner.style.display = 'flex';
-      banner.className = 'sub-banner sub-expired';
-      banner.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Subscription Expired — <a onclick="openSubscriptionModal()" style="cursor:pointer;font-weight:700;text-decoration:underline;">Upgrade / Renew</a>';
-    } else {
-      banner.style.display = 'none';
-    }
-    // 5-day warning
-    if ((info.status === 'Subscription Active' || info.status === 'Free Trial') && info.daysRemaining <= 5 && info.daysRemaining >= 0 && !subscriptionWarningShown) {
-      subscriptionWarningShown = true;
-      alert('Your subscription is about to expire. ' + info.daysRemaining + ' days remaining.\n\nClick "Upgrade / Renew" to continue without interruption.');
-    }
-  }
-
-  function openSubscriptionModal() { document.getElementById('subscriptionModal').style.display = 'flex'; document.getElementById('paymentSection').style.display = 'none'; }
-  function closeSubscriptionModal() { document.getElementById('subscriptionModal').style.display = 'none'; }
-  function selectPlan(plan, amount) {
-    selectedPlan = plan; selectedPlanAmount = amount;
-    document.querySelectorAll('.sub-plan-card').forEach(function(c) { c.classList.remove('selected'); });
-    document.querySelector('[data-plan="' + plan + '"]').classList.add('selected');
-    document.getElementById('paymentSection').style.display = 'block';
-    var names = { '1month': '1 Month', '3months': '3 Months', '6months': '6 Months', '1year': '1 Year' };
-    document.getElementById('selectedPlanName').innerText = names[plan];
-    document.getElementById('selectedPlanAmount').innerText = '₹' + amount.toLocaleString('en-IN');
-  }
-  function initiateUPIPayment() {
-    var upiId = platformSettings.upiId || '8089278115@superyes';
-    var bizName = currentBusinessId ? (businessesRegistry[currentBusinessId] && businessesRegistry[currentBusinessId].profile.name) : 'FinTrack';
-    var upiUrl = 'upi://pay?pa=' + upiId + '&pn=' + encodeURIComponent(bizName) + '&am=' + selectedPlanAmount + '&cu=INR&tn=FinTrack' + selectedPlan;
-    window.location.href = upiUrl;
-  }
-  function submitPaymentProof() {
-    var whatsappNum = platformSettings.adminWhatsApp || '918089278115';
-    var names = { '1month': '1 Month (₹111)', '3months': '3 Months (₹333)', '6months': '6 Months (₹666)', '1year': '1 Year (₹111,141)' };
-    var msg = 'FinTrack Business - Payment Proof Submission%0A%0ABusiness: ' + (businessesRegistry[currentBusinessId] && businessesRegistry[currentBusinessId].profile.name) + '%0ABusiness ID: ' + currentBusinessId + '%0APlan: ' + (names[selectedPlan] || '') + '%0AAmount: ₹' + selectedPlanAmount + '%0A%0APayment screenshot attached. Please verify and activate my subscription.';
-    window.open('https://wa.me/' + whatsappNum + '?text=' + msg, '_blank');
-    // Update payment status
-    if (currentBusinessId) {
-      firebase.database().ref(PLATFORM_NODE + '/businesses/' + currentBusinessId + '/subscription/paymentStatus').set('pending').catch(function() {});
-      firebase.database().ref(PLATFORM_NODE + '/businesses/' + currentBusinessId + '/subscription/plan').set(names[selectedPlan]).catch(function() {});
-    }
-    alert('Payment proof shared with Admin. Your subscription will be activated after verification.\n\nThank you!');
-    closeSubscriptionModal();
-  }
-
-  function showExpiredSubscriptionMessage() {
-    if (!confirm('Your subscription has expired.\n\nAll your business data is safely stored.\n\nClick OK to upgrade/renew your subscription, or Cancel to logout.')) {
-      performLogout(); return;
-    }
-    openSubscriptionModal();
-  }
-
-  function performLogout() {
-    if (businessDbRef) { businessDbRef.off(); businessDbRef = null; }
-    if (firebase.auth().currentUser) {
-      firebase.auth().signOut().then(function() {
-        currentBusinessId = null; currentRole = null; isPlatformAdmin = false; currentUser = null;
-        subscriptionWarningShown = false;
-        localStorage.removeItem('FT_CURRENT_BID'); localStorage.removeItem('FT_CURRENT_ROLE'); localStorage.removeItem('FT_CURRENT_EMAIL');
-        document.getElementById('btn-appSettingsTab').style.display = 'none';
-        document.getElementById('drawer-appSettingsTab').style.display = 'none';
-        document.getElementById('btn-adminTab').style.display = 'none';
-        document.getElementById('drawer-adminTab').style.display = 'none';
-        var banner = document.getElementById('subscriptionBanner'); if (banner) banner.style.display = 'none';
-        var upgradeBtn = document.getElementById('upgradeBtn'); if (upgradeBtn) upgradeBtn.style.display = 'none';
-        showWelcomePage();
-      });
-    } else {
-      currentBusinessId = null; currentRole = null; isPlatformAdmin = false; currentUser = null;
-      subscriptionWarningShown = false;
-      localStorage.removeItem('FT_CURRENT_BID'); localStorage.removeItem('FT_CURRENT_ROLE'); localStorage.removeItem('FT_CURRENT_EMAIL');
-      showWelcomePage();
-    }
-  }
-
-  /* THEME SYSTEM */
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    document.querySelectorAll('.theme-btn').forEach(function(b) { b.classList.remove('active'); });
-    var btn = document.querySelector('.theme-' + theme);
-    if (btn) btn.classList.add('active');
-    saveUserTheme(theme);
-  }
-  
-  function saveUserTheme(theme) {
-    var key = 'FT_THEME_' + (currentUser ? (currentUser.email || currentUser.name) : 'default');
-    localStorage.setItem(key, JSON.stringify({ theme: theme }));
-  }
-  function loadUserTheme() {
-    var key = 'FT_THEME_' + (currentUser ? (currentUser.email || currentUser.name) : 'default');
-    var saved = localStorage.getItem(key);
-    if (saved) { try { var p = JSON.parse(saved); setTheme(p.theme || 'blue'); } catch(e) {} }
-    else setTheme('blue');
-  }
-
-  /* MIGRATION */
-  function migrateToMultiTenant() {
-    // Use Firebase database flag (not localStorage) to prevent re-runs from different browsers
-    var migFlagRef = firebase.database().ref(PLATFORM_NODE + '/platformSettings/migrationDone');
-    migFlagRef.once('value').then(function(snap) {
-      if (snap.val() === true) return; // Already migrated — don't overwrite
-
-      var todayStr = getISTDateStr();
-      var trialEnd = new Date(todayStr); trialEnd.setDate(trialEnd.getDate() + 14);
-      var defaultBid = 'BIZ-DEFAULT';
-      var defaultBusiness = {
-        profile: { name: 'ATMOS Digital Solutions', adminName: 'Admin', adminEmail: 'admin@fintrack.platform', adminMobile: '8089278115', category: 'Common Service Center (CSC)', logo: appData.logoDataUrl || '', motto: 'Fast. Secure. Seamless.', registrationDate: '2026-01-01', lastLogin: getISTDateTimeStr() },
-        subscription: { status: 'Subscription Active', trialStart: '2026-01-01', trialDuration: 14, trialEnd: trialEnd.toISOString().substring(0, 10), subStart: '2026-01-01', subEnd: '2027-12-31', plan: '1 Year', paymentStatus: 'verified' },
-        data: convertToLegacyFormat()
-      };
-      // Hash existing passwords
-      if (defaultBusiness.data.userAccounts) {
-        defaultBusiness.data.userAccounts.forEach(function(u) { if (u.password && !u.password.startsWith('h')) u.password = simpleHash(u.password); });
-      }
-      businessesRegistry[defaultBid] = defaultBusiness;
-      var bizRef = firebase.database().ref(PLATFORM_NODE + '/businesses/' + defaultBid);
-      bizRef.set(defaultBusiness).then(function() {
-        // Set the migration flag in the database so it never runs again
-        migFlagRef.set(true);
-      }).catch(function(e) { console.error('Migration save failed:', e); });
-      // Save platform settings
-      var psRef = firebase.database().ref(PLATFORM_NODE + '/platformSettings');
-      psRef.set(platformSettings).catch(function() {});
-      // Save user index for default admin
-      var userIndexRef = firebase.database().ref(PLATFORM_NODE + '/userIndex/' + simpleHash('admin@fintrack.platform'));
-      userIndexRef.set({ businessId: defaultBid, role: 'Admin', email: 'admin@fintrack.platform', name: 'Admin' }).catch(function() {});
-    }).catch(function() {});
-  }
-
 </script>
 </body>
 </html>
