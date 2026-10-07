@@ -53,6 +53,9 @@
 
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
     body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); color: var(--text-main); min-height: 100vh; padding-bottom: 90px; }
+    /* Disable text selection across the app to prevent content copying */
+    body, * { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none; }
+    input, textarea, select { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }
 
     /* ATMOS Shiny Logo Effect */
     .brand-logo-box {
@@ -3182,7 +3185,7 @@ const FIREBASE_CONFIG = {
       '<p style="font-size:10px; font-weight:bold; color:#0B1E2D; margin:12px 0 4px 0;">CLOSING BALANCE</p>' + closeHtml +
       '</div>';
     var container = document.createElement('div');
-    container.style.position = 'fixed'; container.style.left = '0'; container.style.top = '0'; container.style.width = '800px'; container.style.zIndex = '-9999'; container.style.background = '#ffffff';
+    container.style.width = '800px'; container.style.background = '#ffffff';
     container.innerHTML = html;
     document.body.appendChild(container);
     var opt = { margin: 0.5, filename: 'ATMOS_Daily_Report_'+date+'.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
@@ -4532,6 +4535,7 @@ const FIREBASE_CONFIG = {
       tbody.appendChild(tr);
     });
 
+    Array.prototype.slice.call(tbody.children).sort(function(a, b) { var aDT = (a.cells[1] ? a.cells[1].textContent.trim() : ''); var bDT = (b.cells[1] ? b.cells[1].textContent.trim() : ''); return bDT.localeCompare(aDT); }).forEach(function(tr) { tbody.appendChild(tr); });
     const netBal = rev - exp;
 
     document.getElementById('rptRevenue').innerText = `₹${rev.toFixed(2)}`;
@@ -5599,8 +5603,7 @@ const FIREBASE_CONFIG = {
     });
     var htmlContent = '<div style="padding:30px; font-family:Arial,sans-serif; color:#0f172a;"><div style="display:flex; justify-content:space-between; border-bottom:3px solid #0B1E2D; padding-bottom:12px; margin-bottom:20px;"><div><h1 style="font-size:20px; color:#0B1E2D; margin:0;">' + shopName + '</h1><p style="font-size:12px; color:#64748b; margin:4px 0 0 0;">Contact: ' + contactNumber + '</p></div><div style="text-align:right;"><h2 style="font-size:16px; color:#EE2B2E; margin:0;">STAFF REPORT</h2><p style="font-size:11px; color:#64748b; margin:4px 0 0 0;">Month: ' + month + '</p></div></div><table style="width:100%; border-collapse:collapse; font-size:11px;"><thead><tr style="background:#f1f5f9;"><th style="padding:6px; border:1px solid #cbd5e1;">STAFF NAME</th><th style="padding:6px; border:1px solid #cbd5e1;">INTERACTIONS</th><th style="padding:6px; border:1px solid #cbd5e1;">COLLECTION (₹)</th><th style="padding:6px; border:1px solid #cbd5e1;">INCENTIVE (₹)</th><th style="padding:6px; border:1px solid #cbd5e1;">PAYABLE SALARY (₹)</th><th style="padding:6px; border:1px solid #cbd5e1;">ATTENDANCE %</th></tr></thead><tbody>' + rowsHtml + '</tbody></table><div style="margin-top:40px; display:flex; justify-content:flex-end;"><div style="text-align:right; border-top:2px dashed #64748b; width:200px; padding-top:6px;"><p style="font-size:12px; color:#64748b; margin:0;">Verified by Admin</p><p style="font-size:13px; font-weight:bold; color:#0B1E2D; margin:4px 0 0 0;">' + adminName + '</p></div></div></div>';
     var container = document.createElement('div');
-    container.style.position = 'fixed';
-    container.style.left = '0'; container.style.top = '0'; container.style.width = '800px'; container.style.zIndex = '-9999'; container.style.background = '#ffffff';
+    container.style.width = '800px'; container.style.background = '#ffffff';
     container.innerHTML = htmlContent;
     document.body.appendChild(container);
     var opt = { margin: 0.5, filename: 'ATMOS_Staff_Report_' + month + '.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
