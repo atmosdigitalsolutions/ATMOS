@@ -664,9 +664,9 @@
         <div class="month-picker-box"><label>Select Month:</label><input type="month" id="staffOpeningBalMonthPicker" onchange="renderStaffOpeningBalSummary()"></div>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
-        <div style="background:white; padding:14px; border-radius:var(--radius-md); border:1px solid var(--border);"><span style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Cash Drawer</span><div id="staffObCash" style="font-size:1.2rem; font-weight:800; color:var(--accent-green);">₹0.00</div></div>
-        <div style="background:white; padding:14px; border-radius:var(--radius-md); border:1px solid var(--border);"><span style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Bank / UPI</span><div id="staffObBank" style="font-size:1.2rem; font-weight:800; color:var(--primary);">₹0.00</div></div>
-        <div style="background:white; padding:14px; border-radius:var(--radius-md); border:1px solid var(--border);"><span style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Receivables</span><div id="staffObCredit" style="font-size:1.2rem; font-weight:800; color:var(--accent-purple);">₹0.00</div></div>
+        <div style="background:white; padding:14px; border-radius:var(--radius-md); border:1px solid var(--border);"><span style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Cash Drawer</span> <button id="staffObCashEditBtn" onclick="openStaffObEditModal('cash')" title="Edit Cash Drawer" style="background:none; color:var(--atmos-green); padding:0 4px; font-size:0.75rem; display:none;"><i class="fa-solid fa-pen"></i></button><div id="staffObCash" style="font-size:1.2rem; font-weight:800; color:var(--accent-green);">₹0.00</div></div>
+        <div style="background:white; padding:14px; border-radius:var(--radius-md); border:1px solid var(--border);"><span style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Bank / UPI</span> <button id="staffObBankEditBtn" onclick="openStaffObEditModal('bank')" title="Edit Bank / UPI" style="background:none; color:var(--atmos-blue); padding:0 4px; font-size:0.75rem; display:none;"><i class="fa-solid fa-pen"></i></button><div id="staffObBank" style="font-size:1.2rem; font-weight:800; color:var(--primary);">₹0.00</div></div>
+        <div style="background:white; padding:14px; border-radius:var(--radius-md); border:1px solid var(--border);"><span style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Receivables</span> <button id="staffObCreditEditBtn" onclick="openStaffObEditModal('credit')" title="Edit Receivables" style="background:none; color:var(--accent-purple); padding:0 4px; font-size:0.75rem; display:none;"><i class="fa-solid fa-pen"></i></button><div id="staffObCredit" style="font-size:1.2rem; font-weight:800; color:var(--accent-purple);">₹0.00</div></div>
         <div style="background:var(--accent-amber-bg); padding:14px; border-radius:var(--radius-md); border:1px solid #fde68a;"><span style="font-size:0.7rem; font-weight:800; color:var(--accent-amber); text-transform:uppercase;">Overall Opening Balance</span><div id="staffObTotal" style="font-size:1.3rem; font-weight:900; color:var(--atmos-navy);">₹0.00</div></div>
       </div>
     </div>
@@ -1588,6 +1588,10 @@
       </div>
 
       <button class="btn-primary" onclick="saveAdminOpeningBalances()" style="width: auto;">Save Opening Balances</button>
+      <div style="display: flex; align-items: center; gap: 10px; background: var(--accent-amber-bg); border: 1px solid var(--accent-amber); border-radius: var(--radius-md); padding: 10px 14px; margin-top: 14px;">
+        <input type="checkbox" id="staffBalanceEditAccessToggle" onchange="setStaffBalanceEditAccess(this.checked)" style="width: 18px; height: 18px; cursor: pointer;">
+        <label for="staffBalanceEditAccessToggle" style="margin: 0; color: var(--accent-amber); font-size: 0.8rem; cursor: pointer;">Staff Access: show Edit icons for Cash Drawer, Bank/UPI &amp; Receivables in the Staff Monthly Opening Balance Summary</label>
+      </div>
     </div>
 
     <!-- 4. STAFF REPORTS (ADMIN ONLY) -->
@@ -2211,6 +2215,25 @@
   </div>
 </div>
 
+<!-- EDIT STAFF MONTHLY RECEIVABLES MODAL -->
+<div id="staffObCreditModal" class="modal" style="display: none;">
+  <div class="modal-card">
+    <h3 id="staffObCreditModalTitle" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 16px;">Edit Opening Balance</h3>
+    <div class="form-group">
+      <label>Month</label>
+      <input type="month" id="staffObCreditMonth" readonly style="background: var(--bg);">
+    </div>
+    <div class="form-group">
+      <label id="staffObCreditAmountLabel">New Receivables / Credit Opening Balance (₹)</label>
+      <input type="number" id="staffObCreditNewAmount" min="0" required>
+    </div>
+    <div style="display: flex; gap: 10px; margin-top: 16px;">
+      <button style="flex: 1; background: var(--bg); color: var(--text-muted);" onclick="closeStaffObCreditModal()">Cancel</button>
+      <button style="flex: 1;" class="btn-primary" onclick="saveStaffObCredit()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
 <!-- DAILY 1000+ SERVICE CHARGE POPUP MODAL -->
 <div id="daily1000Modal" class="modal" style="display: none;">
   <div class="modal-card" style="text-align: center; border-top: 5px solid var(--accent-green);">
@@ -2359,7 +2382,8 @@
     adminTransfers: [],
     historicalMonths: {},
     logoDataUrl: '',
-    attendanceExtrasVisibleForStaff: true
+    attendanceExtrasVisibleForStaff: true,
+    staffBalanceEditAccess: true
   };
 
   let currentUser = null;
@@ -2527,6 +2551,7 @@ const FIREBASE_CONFIG = {
       }),
       historicalMonths: appData.historicalMonths || {},
       attendanceExtrasVisibleForStaff: appData.attendanceExtrasVisibleForStaff !== false,
+      staffBalanceEditAccess: appData.staffBalanceEditAccess !== false,
       adminMessages: [],
       lastUpdated: Date.now()
     };
@@ -2790,6 +2815,10 @@ const FIREBASE_CONFIG = {
 
     if (legacy.attendanceExtrasVisibleForStaff !== undefined) {
       out.attendanceExtrasVisibleForStaff = !!legacy.attendanceExtrasVisibleForStaff;
+    }
+
+    if (legacy.staffBalanceEditAccess !== undefined) {
+      out.staffBalanceEditAccess = !!legacy.staffBalanceEditAccess;
     }
 
     return out;
@@ -3311,6 +3340,12 @@ const FIREBASE_CONFIG = {
     var card = document.getElementById('staffOpeningBalSummaryCard');
     if (card) card.style.display = isStaff ? 'block' : 'none';
     if (!isStaff) return;
+    var editVisible = (appData.staffBalanceEditAccess !== false);
+    ['staffObCashEditBtn', 'staffObBankEditBtn', 'staffObCreditEditBtn'].forEach(function(id) {
+      var b = document.getElementById(id);
+      if (b) b.style.display = editVisible ? 'inline-block' : 'none';
+    });
+
     var picker = document.getElementById('staffOpeningBalMonthPicker');
     var month = picker ? picker.value : getISTMonthStr();
     var op = appData.openingBalances[month] || { cash: 0, bank: 0, credit: 0 };
@@ -5112,6 +5147,8 @@ const FIREBASE_CONFIG = {
   /* OPENING BALANCES CONFIGURATION */
   function loadAdminOpeningBalancesForPicker() {
     const month = document.getElementById('openingBalMonthPicker').value || getISTMonthStr();
+    var accToggle = document.getElementById('staffBalanceEditAccessToggle');
+    if (accToggle) accToggle.checked = appData.staffBalanceEditAccess !== false;
     if (appData.openingBalances[month]) {
       document.getElementById('adminOpeningCashInput').value = appData.openingBalances[month].cash || 0;
       document.getElementById('adminOpeningBankInput').value = appData.openingBalances[month].bank || 0;
@@ -6011,6 +6048,54 @@ const FIREBASE_CONFIG = {
     saveData();
     refreshAllViews();
     alert(checked ? 'Staff can now view the Half Day, Approved Leave and Total Deductions boxes.' : 'Staff can no longer view the Half Day, Approved Leave and Total Deductions boxes.');
+  }
+
+  /* Staff access control: update balances & settle receivables (Admin toggle) */
+  function setStaffBalanceEditAccess(checked) {
+    appData.staffBalanceEditAccess = !!checked;
+    saveData();
+    refreshAllViews();
+    alert(checked ? 'Staff can now edit Cash Drawer, Bank/UPI and Receivables in the Monthly Opening Balance Summary.' : 'Staff can no longer edit Cash Drawer, Bank/UPI and Receivables in the Monthly Opening Balance Summary.');
+  }
+
+  /* STAFF: edit Cash Drawer / Bank-UPI / Receivables opening balances (Monthly Opening Balance Summary) */
+  var staffObEditField = 'credit';
+  var staffObFieldLabels = { cash: 'Cash Drawer', bank: 'Bank / UPI', credit: 'Receivables' };
+
+  function openStaffObEditModal(field) {
+    if (!field) field = 'credit';
+    staffObEditField = field;
+    if (!currentUser || currentUser.role !== 'Staff') return;
+    if (appData.staffBalanceEditAccess === false) return alert('Opening balance editing is currently disabled by Admin.');
+    if (IS_MOBILE_DEVICE) return alert('Mobile View-Only Mode: editing is disabled on this device.');
+    var picker = document.getElementById('staffOpeningBalMonthPicker');
+    var month = picker ? picker.value : getISTMonthStr();
+    document.getElementById('staffObCreditMonth').value = month;
+    document.getElementById('staffObCreditModalTitle').innerText = 'Edit ' + staffObFieldLabels[field] + ' Opening Balance';
+    var labelEl = document.getElementById('staffObCreditAmountLabel');
+    if (labelEl) labelEl.innerText = 'New ' + staffObFieldLabels[field] + ' Opening Balance (₹)';
+    var op = appData.openingBalances[month] || { cash: 0, bank: 0, credit: 0 };
+    document.getElementById('staffObCreditNewAmount').value = parseFloat(op[field] || 0).toFixed(2);
+    document.getElementById('staffObCreditModal').style.display = 'flex';
+  }
+
+  function closeStaffObCreditModal() {
+    document.getElementById('staffObCreditModal').style.display = 'none';
+  }
+
+  function saveStaffObCredit() {
+    if (!currentUser || currentUser.role !== 'Staff') return;
+    if (appData.staffBalanceEditAccess === false) return alert('Opening balance editing is currently disabled by Admin.');
+    var month = document.getElementById('staffObCreditMonth').value;
+    if (!month) return alert('Please select a month.');
+    var field = staffObEditField || 'credit';
+    var newAmt = parseFloat(document.getElementById('staffObCreditNewAmount').value || 0);
+    if (!appData.openingBalances[month]) appData.openingBalances[month] = { cash: 0, bank: 0, credit: 0 };
+    appData.openingBalances[month][field] = newAmt;
+    saveData();
+    closeStaffObCreditModal();
+    alert(staffObFieldLabels[field] + ' opening balance updated for ' + month + '!');
+    refreshAllViews();
   }
 </script>
 </body>
